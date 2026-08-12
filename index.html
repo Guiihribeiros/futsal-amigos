@@ -72,7 +72,9 @@ h1{margin:0; font-size:clamp(2.1rem,7vw,3.4rem); line-height:.95; color:var(--ti
   color:var(--ink-3); margin:0 0 5px;}
 .tile dd{margin:0; font-size:1.6rem; line-height:1.05; color:var(--tinta-forte);}
 .tile dd small{font-size:.78rem; color:var(--ink-3); font-weight:400;}
-.tile.alerta dd{color:var(--vermelho);}
+/* o nome do artilheiro e texto, nao numero: cabe menor e pode quebrar */
+.tile.artilheiro dd{font-size:1.15rem; line-height:1.15; overflow-wrap:anywhere;}
+.tile.artilheiro dd small{display:block; margin-top:2px;}
 
 /* ---------- placar tipo sumula ---------- */
 .sumula{border:2px solid var(--tinta); background:var(--cartao);
@@ -176,6 +178,8 @@ a{color:var(--tinta);}
 @media (max-width:560px){
   .wrap{padding:20px 13px 48px;}
   .tile dd{font-size:1.35rem;}
+  /* com 3 tiles em 2 colunas sobraria um quadrante vazio: o artilheiro ocupa a linha */
+  .tile.artilheiro{grid-column:1/-1;}
   table{min-width:0;}
   td,thead th{padding:8px 6px;}
   .so-mobile{display:block;}
@@ -206,13 +210,11 @@ a{color:var(--tinta);}
   <dl class="faixa">
     <div class="tile"><dt>Jogos realizados</dt><dd>1<small> / 12</small></dd></div>
     <div class="tile"><dt>Gols no campeonato</dt><dd>11</dd></div>
-    <div class="tile "><dt>Multas em aberto</dt><dd>R$ 65,00</dd></div>
-    <div class="tile"><dt>Atletas devendo</dt><dd>4<small> / 14</small></dd></div>
+    <div class="tile artilheiro"><dt>Artilheiro até agora</dt><dd>EDUARDO<small>4 gols · PORTUGAL</small></dd></div>
   </dl>
 
   <section id="ultimo">
     <h2>Última rodada</h2>
-    <p class="dica">O placar sai da soma dos gols lançados na súmula.</p>
     
       <div class="sumula">
         <div class="sumula-lado"><span class="sumula-cor">branco</span><b>FRANÇA</b></div>
