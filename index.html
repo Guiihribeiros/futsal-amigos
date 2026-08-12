@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="color-scheme" content="light dark">
+<meta name="color-scheme" content="light">
 <meta name="description" content="Classificação, artilharia e multas do Campeonato - Os Amigos.">
 <meta property="og:title" content="Campeonato - Os Amigos">
 <meta property="og:description" content="Classificação, artilharia e multas em aberto.">
@@ -14,33 +14,14 @@
 <body>
 <style>
 :root{
-  --papel:#ECEEF1; --cartao:#FFFFFF; --tinta:#16305C; --tinta-forte:#0C1D3C;
-  --ink:#16223A; --ink-2:#4A5872; --ink-3:#7C889E; --linha:#C9D0DB; --linha-2:#DDE2EA;
-  --barra:#2C5AA0; --barra-fundo:#DCE3EE;
-  --amarelo:#9A7400; --amarelo-bg:#FBF0CE; --amarelo-mk:#D9A400;
+  /* tema unico e claro: fundo branco, pedido do usuario */
+  --papel:#FFFFFF; --cartao:#FFFFFF; --tinta:#16305C; --tinta-forte:#0C1D3C;
+  --ink:#16223A; --ink-2:#4A5872; --ink-3:#6B7789; --linha:#C9D0DB; --linha-2:#E2E6ED;
+  --barra:#2C5AA0; --barra-fundo:#EDF1F7;
+  --amarelo:#8A6800; --amarelo-bg:#FBF0CE; --amarelo-mk:#D9A400;
   --vermelho:#9E1F1A; --vermelho-bg:#FADCDA; --vermelho-mk:#B3241F;
   --verde:#1F6B4F;
-  --realce:#FFF6D6;
-}
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --papel:#0E1626; --cartao:#151F33; --tinta:#A8C4EE; --tinta-forte:#D6E4F8;
-    --ink:#E4EAF4; --ink-2:#A5B2C8; --ink-3:#78859B; --linha:#2E3B57; --linha-2:#243049;
-    --barra:#5B8AD1; --barra-fundo:#22304B;
-    --amarelo:#EBC55A; --amarelo-bg:#3A2F12; --amarelo-mk:#E2B33C;
-    --vermelho:#F0908A; --vermelho-bg:#3B1A18; --vermelho-mk:#D8564E;
-    --verde:#6BC79E;
-    --realce:#1E2A44;
-  }
-}
-:root[data-theme="dark"]{
-  --papel:#0E1626; --cartao:#151F33; --tinta:#A8C4EE; --tinta-forte:#D6E4F8;
-  --ink:#E4EAF4; --ink-2:#A5B2C8; --ink-3:#78859B; --linha:#2E3B57; --linha-2:#243049;
-  --barra:#5B8AD1; --barra-fundo:#22304B;
-  --amarelo:#EBC55A; --amarelo-bg:#3A2F12; --amarelo-mk:#E2B33C;
-  --vermelho:#F0908A; --vermelho-bg:#3B1A18; --vermelho-mk:#D8564E;
-  --verde:#6BC79E;
-  --realce:#1E2A44;
+  --realce:#FFF6D6; --zebra:#F5F7FA;
 }
 
 *{box-sizing:border-box;}
@@ -50,8 +31,8 @@ body{
   font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
 }
 .wrap{max-width:920px; margin:0 auto; padding:28px 20px 64px;}
-.cond{font-family:"Haettenschweiler","Arial Narrow","Franklin Gothic Medium",Impact,
-  "Segoe UI",sans-serif; font-weight:700; letter-spacing:.005em;}
+/* sem fonte condensada: a anterior ficava dura de ler */
+.cond{font-weight:800; letter-spacing:-.005em;}
 .mono{font-family:Consolas,"SFMono-Regular",Menlo,ui-monospace,monospace;}
 .n,.jp,.barra-valor,td.n,time{font-variant-numeric:tabular-nums;}
 
@@ -59,8 +40,8 @@ body{
 header{border-top:3px solid var(--tinta); padding-top:14px; margin-bottom:26px;}
 .eyebrow{font-size:.7rem; text-transform:uppercase; letter-spacing:.16em;
   color:var(--ink-3); margin:0 0 6px;}
-h1{margin:0; font-size:clamp(2.1rem,7vw,3.4rem); line-height:.95; color:var(--tinta-forte);
-  text-transform:uppercase; text-wrap:balance; letter-spacing:.012em;}
+h1{margin:0; font-size:clamp(1.7rem,5.2vw,2.6rem); line-height:1.05; color:var(--tinta-forte);
+  text-transform:uppercase; text-wrap:balance; letter-spacing:-.01em;}
 .sub-h1{margin:8px 0 0; color:var(--ink-2); font-size:.9rem;}
 
 /* ---------- faixa de numeros ---------- */
@@ -83,11 +64,11 @@ h1{margin:0; font-size:clamp(2.1rem,7vw,3.4rem); line-height:.95; color:var(--ti
 .sumula-lado{display:flex; flex-direction:column; gap:2px; min-width:0;}
 .sumula-lado.dir{align-items:flex-end; text-align:right;}
 .sumula-cor{font-size:.6rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-3);}
-.sumula-lado b{font-family:"Haettenschweiler","Arial Narrow",Impact,sans-serif;
-  font-size:clamp(1.1rem,4.4vw,1.7rem); text-transform:uppercase; color:var(--ink);
-  line-height:1; overflow-wrap:anywhere;}
+.sumula-lado b{font-weight:800; font-size:clamp(1.05rem,4.2vw,1.55rem);
+  text-transform:uppercase; color:var(--tinta-forte); letter-spacing:-.01em;
+  line-height:1.05; overflow-wrap:anywhere;}
 .sumula-placar{display:flex; align-items:center; gap:9px;}
-.sumula-gol{font-family:Consolas,ui-monospace,monospace; font-size:clamp(1.7rem,7vw,2.5rem);
+.sumula-gol{background:#FFFFFF; font-family:Consolas,ui-monospace,monospace; font-size:clamp(1.7rem,7vw,2.5rem);
   line-height:1; color:var(--ink-2); border:1.5px solid var(--linha);
   padding:3px 11px; min-width:2.1em; text-align:center;}
 .sumula-gol.vencedor{color:#fff; background:var(--tinta); border-color:var(--tinta);}
@@ -119,6 +100,7 @@ td.motivo{font-size:.8rem; color:var(--ink-2);}
 td.n{font-family:Consolas,ui-monospace,monospace; color:var(--ink);}
 td.forte{font-weight:700; color:var(--tinta-forte);}
 td.discreto{color:var(--ink-3);}
+tbody tr:nth-child(even){background:var(--zebra);}
 tr.lider{background:var(--realce);}
 .quad{display:inline-block; min-width:1.7em; padding:2px 0; text-align:center;
   font-family:Consolas,ui-monospace,monospace; font-size:.82rem;
