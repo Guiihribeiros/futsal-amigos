@@ -146,6 +146,12 @@ tr.lider{background:var(--realce);}
 .rodada li.futuro .jt{color:var(--ink-3);}
 
 .vazio{color:var(--ink-3); font-size:.85rem; padding:16px 10px; text-align:center;}
+.vazio.ok{color:var(--verde); font-weight:600;}
+td.alerta{color:var(--vermelho);}
+.dias{display:inline-block; font-family:Consolas,ui-monospace,monospace; font-size:.7rem;
+  font-weight:700; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
+  color:var(--vermelho); background:var(--vermelho-bg); padding:3px 8px;}
+#vencidas .rolagem.alerta{border-color:var(--vermelho-mk); border-width:1.5px;}
 footer{margin-top:52px; border-top:1px solid var(--linha); padding-top:16px;
   font-size:.75rem; color:var(--ink-3);}
 footer p{margin:0 0 6px;}
@@ -154,7 +160,7 @@ a{color:var(--tinta);}
 :focus-visible{outline:2px solid var(--barra); outline-offset:2px;}
 @media (prefers-reduced-motion:reduce){*{transition:none !important;}}
 
-.so-mobile{display:none;}
+td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub' */
 /* No celular a tabela nao deve pedir arrasto: some com as colunas secundarias e
    mostra o vencimento embaixo do nome. O que sobra e o que o jogador precisa. */
 @media (max-width:560px){
@@ -164,7 +170,7 @@ a{color:var(--tinta);}
   .tile.artilheiro{grid-column:1/-1;}
   table{min-width:0;}
   td,thead th{padding:8px 6px;}
-  .so-mobile{display:block;}
+  td.nome .sub.so-mobile{display:block;}
   /* classificacao: fica POS, TIME, PTS, J, SG */
   #classificacao th:nth-child(5),#classificacao td:nth-child(5),
   #classificacao th:nth-child(6),#classificacao td:nth-child(6),
@@ -178,7 +184,9 @@ a{color:var(--tinta);}
   .barra-td{width:auto; min-width:96px;}
   /* multas: fica ATLETA (com o vencimento embaixo), EM ABERTO, SITUACAO */
   #multas th:nth-child(2),#multas td:nth-child(2),
-  #multas th:nth-child(4),#multas td:nth-child(4){display:none;}
+  #multas th:nth-child(4),#multas td:nth-child(4),
+  #vencidas th:nth-child(2),#vencidas td:nth-child(2),
+  #vencidas th:nth-child(4),#vencidas td:nth-child(4){display:none;}
   .chip{font-size:.62rem; padding:3px 6px; letter-spacing:.06em;}
 }
 </style>
@@ -339,7 +347,7 @@ a{color:var(--tinta);}
 
   <section id="multas">
     <h2>Multas em aberto</h2>
-    <p class="dica">Ausência R$ 20 &middot; amarelo R$ 15 &middot; amarelo + vermelho R$ 45 &middot; vermelho direto R$ 30. Prazo de 15 dias a contar do jogo; na última rodada, 6 dias.</p>
+    <p class="dica">Ainda dentro do prazo. Ausência R$ 20 &middot; amarelo R$ 15 &middot; amarelo + vermelho R$ 45 &middot; vermelho direto R$ 30. O prazo é de 15 dias a contar do jogo; na última rodada, 6 dias.</p>
     <div class="rolagem">
       <table>
         <thead><tr>
@@ -374,6 +382,19 @@ a{color:var(--tinta);}
           <td class="n discreto">02/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="vencidas">
+    <h2>Multas vencidas</h2>
+    <p class="dica">Passaram do prazo e ainda não foram pagas. Quem pagar sai desta lista automaticamente na próxima atualização.</p>
+    <div class="rolagem ">
+      <table>
+        <thead><tr>
+          <th>Atleta</th><th>Motivo</th><th>Valor vencido</th><th>Venceu em</th><th>Atraso</th>
+        </tr></thead>
+        <tbody><tr><td colspan="5" class="vazio ok">Ninguém com multa vencida — todo mundo em dia com o prazo.</td></tr></tbody>
       </table>
     </div>
   </section>
