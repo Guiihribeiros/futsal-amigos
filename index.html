@@ -97,6 +97,8 @@ td.nome{font-weight:600; color:var(--ink); line-height:1.2;}
 td.nome .sub{display:block; font-size:.68rem; font-weight:400; color:var(--ink-3);
   text-transform:uppercase; letter-spacing:.07em;}
 td.motivo{font-size:.8rem; color:var(--ink-2);}
+/* quem pagou parte: o valor ao lado e o saldo, nao o total do campeonato */
+td.motivo .sub{display:block; margin-top:2px; font-size:.68rem; color:var(--ink-3);}
 td.n{font-family:Consolas,ui-monospace,monospace; color:var(--ink);}
 td.forte{font-weight:700; color:var(--tinta-forte);}
 td.discreto{color:var(--ink-3);}
@@ -561,20 +563,6 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
         </tr></thead>
         <tbody>
         <tr>
-          <td class="nome">Naldo<span class="sub">FRANÇA</span><span class="sub so-mobile">vence 19/08/2026</span></td>
-          <td class="motivo">1&times; ausência</td>
-          <td class="n forte">R$ 20,00</td>
-          <td class="n discreto">19/08/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Robson<span class="sub">FRANÇA</span><span class="sub so-mobile">vence 19/08/2026</span></td>
-          <td class="motivo">1&times; ausência</td>
-          <td class="n forte">R$ 20,00</td>
-          <td class="n discreto">19/08/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr>
-        <tr>
           <td class="nome">Tatoh<span class="sub">FRANÇA</span><span class="sub so-mobile">vence 26/08/2026</span></td>
           <td class="motivo">1&times; ausência</td>
           <td class="n forte">R$ 20,00</td>
@@ -589,10 +577,10 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
         <tr>
-          <td class="nome">R. Faria<span class="sub">BRASIL</span><span class="sub so-mobile">vence 19/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
+          <td class="nome">Bolivia<span class="sub">FRANÇA</span><span class="sub so-mobile">vence 26/08/2026</span></td>
+          <td class="motivo">2&times; amarelo<span class="sub">R$ 30,00 no campeonato, R$ 15,00 já pago</span></td>
           <td class="n forte">R$ 15,00</td>
-          <td class="n discreto">19/08/2026</td>
+          <td class="n discreto">26/08/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr></tbody>
       </table>
@@ -602,116 +590,12 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
   <section id="vencidas">
     <h2>Multas vencidas</h2>
     <p class="dica">Passaram do prazo e ainda não foram pagas. Quem pagar sai desta lista automaticamente na próxima atualização.</p>
-    <div class="rolagem alerta">
+    <div class="rolagem ">
       <table>
         <thead><tr>
           <th>Atleta</th><th>Motivo</th><th>Valor vencido</th><th>Venceu em</th><th>Atraso</th>
         </tr></thead>
-        <tbody>
-        <tr>
-          <td class="nome">Yvison<span class="sub">BRASIL</span>
-            <span class="sub so-mobile">venceu 05/08/2026</span></td>
-          <td class="motivo">2&times; ausência</td>
-          <td class="n forte alerta">R$ 40,00</td>
-          <td class="n discreto">05/08/2026</td>
-          <td class="n"><span class="dias">8 dias</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Higor<span class="sub">BRASIL</span>
-            <span class="sub so-mobile">venceu 05/08/2026</span></td>
-          <td class="motivo">2&times; amarelo</td>
-          <td class="n forte alerta">R$ 30,00</td>
-          <td class="n discreto">05/08/2026</td>
-          <td class="n"><span class="dias">8 dias</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Bolivia<span class="sub">FRANÇA</span>
-            <span class="sub so-mobile">venceu 05/08/2026</span></td>
-          <td class="motivo">2&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">05/08/2026</td>
-          <td class="n"><span class="dias">8 dias</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Leo S<span class="sub">BRASIL</span>
-            <span class="sub so-mobile">venceu 05/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">05/08/2026</td>
-          <td class="n"><span class="dias">8 dias</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Victor O.<span class="sub">FRANÇA</span>
-            <span class="sub so-mobile">venceu 05/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">05/08/2026</td>
-          <td class="n"><span class="dias">8 dias</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Eduardo<span class="sub">PORTUGAL</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">2&times; amarelo &middot; 1&times; vermelho</td>
-          <td class="n forte alerta">R$ 45,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Vitinho<span class="sub">ALEMANHA</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">2&times; ausência</td>
-          <td class="n forte alerta">R$ 20,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Alan<span class="sub">ALEMANHA</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Douglas<span class="sub">ALEMANHA</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">João<span class="sub">BRASIL</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">R. Palmieri<span class="sub">FRANÇA</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">R. Pardinho<span class="sub">PORTUGAL</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr>
-        <tr>
-          <td class="nome">Ronaldo<span class="sub">ALEMANHA</span>
-            <span class="sub so-mobile">venceu 12/08/2026</span></td>
-          <td class="motivo">1&times; amarelo</td>
-          <td class="n forte alerta">R$ 15,00</td>
-          <td class="n discreto">12/08/2026</td>
-          <td class="n"><span class="dias">1 dia</span></td>
-        </tr></tbody>
+        <tbody><tr><td colspan="5" class="vazio ok">Ninguém com multa vencida — todo mundo em dia com o prazo.</td></tr></tbody>
       </table>
     </div>
   </section>
