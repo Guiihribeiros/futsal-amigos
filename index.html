@@ -136,8 +136,15 @@ tr.lider{background:var(--realce);}
   font-size:.63rem; text-transform:uppercase; letter-spacing:.11em; color:var(--ink-3);
   border-bottom:1px solid var(--linha-2); padding-bottom:6px; margin-bottom:8px;}
 .rodada ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px;}
-.rodada li{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:7px;
-  font-size:.78rem;}
+.rodada li{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:7px 7px;
+  font-size:.78rem; padding-bottom:6px; border-bottom:1px dotted var(--linha-2);}
+.rodada li:last-child{padding-bottom:0; border-bottom:0;}
+/* ---------- mesário ---------- */
+/* linha propria embaixo do jogo, ocupando as tres colunas */
+.mesa{grid-column:1/-1; font-size:.63rem; text-transform:uppercase; letter-spacing:.09em;
+  color:var(--ink-3); text-align:center; margin-top:-2px;}
+.mesa b{color:var(--ink-2); font-weight:700; letter-spacing:.04em;}
+.mesa.vazia{color:var(--amarelo);}
 .jt{color:var(--ink-2); overflow-wrap:anywhere; line-height:1.15;}
 .jt.dir{text-align:right;}
 .jt.forte{color:var(--tinta-forte); font-weight:700;}
@@ -224,13 +231,13 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
         <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>PORTUGAL</b></div>
         <div class="sumula-placar"><span class="sumula-gol vencedor">3</span><i>x</i><span class="sumula-gol">2</span></div>
         <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>FRANÇA</b></div>
-        <div class="sumula-meta">jogo 7 &middot; rodada 4 &middot; 11/08/2026</div>
+        <div class="sumula-meta">jogo 7 &middot; rodada 4 &middot; 11/08/2026 &middot; mesa: Eduardo</div>
       </div>
       <div class="sumula">
         <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>ALEMANHA</b></div>
         <div class="sumula-placar"><span class="sumula-gol vencedor">10</span><i>x</i><span class="sumula-gol">6</span></div>
         <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>BRASIL</b></div>
-        <div class="sumula-meta">jogo 8 &middot; rodada 4 &middot; 11/08/2026</div>
+        <div class="sumula-meta">jogo 8 &middot; rodada 4 &middot; 11/08/2026 &middot; mesa: Diego</div>
       </div>
   </section>
 
@@ -284,31 +291,32 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
     <h2>Todos os jogos</h2>
     <p class="dica">Duas partidas por terça. Todos se enfrentam duas vezes.
       <b>Uniforme:</b> quem está à esquerda joga de branco <i class="cam br"></i>,
-      quem está à direita joga de azul <i class="cam az"></i>.</p>
+      quem está à direita joga de azul <i class="cam az"></i>.
+      Embaixo de cada jogo, quem fica na <b>mesa</b>.</p>
     <div class="rodadas">
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 1</span><time>21/07/2026</time></div>
-          <ul><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">1<i>&ndash;</i>10</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span></li><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> ALEMANHA</span></li></ul>
+          <ul><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">1<i>&ndash;</i>10</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span><span class="mesa">mesa: <b>Vitinho</b></span></li><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> ALEMANHA</span><span class="mesa">mesa: <b>R. Pardinho</b></span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 2</span><time>28/07/2026</time></div>
-          <ul><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span></li><li><span class="jt dir ">ALEMANHA <i class="cam br"></i></span><span class="jp">2<i>&ndash;</i>6</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span></li></ul>
+          <ul><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span><span class="mesa">mesa: <b>Thiaguinho</b></span></li><li><span class="jt dir ">ALEMANHA <i class="cam br"></i></span><span class="jp">2<i>&ndash;</i>6</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span><span class="mesa">mesa: <b>Vitão</b></span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 3</span><time>04/08/2026</time></div>
-          <ul><li><span class="jt dir ">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>4</span><span class="jt "><i class="cam az"></i> PORTUGAL</span></li><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>8</span><span class="jt forte"><i class="cam az"></i> ALEMANHA</span></li></ul>
+          <ul><li><span class="jt dir ">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>4</span><span class="jt "><i class="cam az"></i> PORTUGAL</span><span class="mesa">mesa: <b>Victor O.</b></span></li><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>8</span><span class="jt forte"><i class="cam az"></i> ALEMANHA</span><span class="mesa">mesa: <b>Higor</b></span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 4</span><time>11/08/2026</time></div>
-          <ul><li><span class="jt dir forte">PORTUGAL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span></li><li><span class="jt dir forte">ALEMANHA <i class="cam br"></i></span><span class="jp">10<i>&ndash;</i>6</span><span class="jt "><i class="cam az"></i> BRASIL</span></li></ul>
+          <ul><li><span class="jt dir forte">PORTUGAL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span><span class="mesa">mesa: <b>Eduardo</b></span></li><li><span class="jt dir forte">ALEMANHA <i class="cam br"></i></span><span class="jp">10<i>&ndash;</i>6</span><span class="jt "><i class="cam az"></i> BRASIL</span><span class="mesa">mesa: <b>Diego</b></span></li></ul>
         </div>
         <div class="rodada proxima">
           <div class="rodada-cab"><span>rodada 5<b class="selo-prox">próxima</b></span><time>18/08/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">FRANÇA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span></li><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> ALEMANHA</span></li></ul>
+          <ul><li class="futuro"><span class="jt dir">FRANÇA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span><span class="mesa">mesa: <b>Lucas</b></span></li><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> ALEMANHA</span><span class="mesa">mesa: <b>Dani</b></span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 6</span><time>25/08/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span></li><li class="futuro"><span class="jt dir">ALEMANHA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> FRANÇA</span></li></ul>
+          <ul><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span><span class="mesa">mesa: <b>Junior</b></span></li><li class="futuro"><span class="jt dir">ALEMANHA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> FRANÇA</span><span class="mesa">mesa: <b>Claudinho</b></span></li></ul>
         </div></div>
   </section>
 
