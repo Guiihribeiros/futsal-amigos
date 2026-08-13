@@ -128,6 +128,27 @@ tr.lider{background:var(--realce);}
 .chip.avencer{color:var(--amarelo); background:var(--amarelo-bg);}
 .chip.avencer i{background:var(--amarelo-mk); border-radius:50%;}
 
+/* ---------- times ---------- */
+.times{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
+  background:var(--linha); border:1px solid var(--linha);}
+.time{background:var(--cartao); padding:11px 13px 13px;}
+.time-cab{display:flex; align-items:center; gap:8px;
+  border-bottom:1px solid var(--linha-2); padding-bottom:7px; margin-bottom:8px;}
+.time-cab b{font-size:.95rem; font-weight:800; text-transform:uppercase;
+  color:var(--tinta-forte); letter-spacing:-.01em;}
+.time-n{display:inline-block; min-width:1.6em; padding:1px 0; text-align:center;
+  background:var(--tinta); color:#FFFFFF; font-weight:700; font-size:.7rem;
+  font-family:Consolas,ui-monospace,monospace;}
+.time ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px;}
+.time li{display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:8px;
+  font-size:.82rem;}
+.vaga{font-family:Consolas,ui-monospace,monospace; font-size:.66rem; color:var(--ink-3);
+  background:var(--barra-fundo); padding:1px 5px; min-width:2.4em; text-align:center;}
+.jogador{color:var(--ink); overflow-wrap:anywhere; line-height:1.2;}
+/* quem assumiu a vaga de outro: o historico nao some */
+.troca{display:block; font-size:.63rem; color:var(--ink-3); line-height:1.25;
+  margin-top:1px;}
+
 /* ---------- rodadas ---------- */
 .rodadas{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
   background:var(--linha); border:1px solid var(--linha);}
@@ -285,6 +306,29 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
         </tr></tbody>
       </table>
     </div>
+  </section>
+
+  <section id="times">
+    <h2>Os times</h2>
+    <p class="dica">Sorteio deste campeonato. O número à esquerda é o nível — é a vaga
+      dentro do time, e quem entra no lugar de alguém assume a mesma vaga.</p>
+    <div class="times">
+        <div class="time">
+          <div class="time-cab"><span class="time-n">1</span><b>BRASIL</b></div>
+          <ul><li><span class="vaga">GOL</span><span class="jogador">Renatinho</span></li><li><span class="vaga">1</span><span class="jogador">Higor</span></li><li><span class="vaga">2</span><span class="jogador">Dani<span class="troca">entrou no lugar de Yvison &middot; a partir do jogo 5</span></span></li><li><span class="vaga">3</span><span class="jogador">R. Faria</span></li><li><span class="vaga">4</span><span class="jogador">Leo S</span></li><li><span class="vaga">5</span><span class="jogador">Sonata</span></li><li><span class="vaga">6</span><span class="jogador">João</span></li></ul>
+        </div>
+        <div class="time">
+          <div class="time-cab"><span class="time-n">2</span><b>ALEMANHA</b></div>
+          <ul><li><span class="vaga">GOL</span><span class="jogador">Alan</span></li><li><span class="vaga">1</span><span class="jogador">Vitinho</span></li><li><span class="vaga">2</span><span class="jogador">Thiaguinho</span></li><li><span class="vaga">3</span><span class="jogador">Leonardo</span></li><li><span class="vaga">4</span><span class="jogador">Ronaldo</span></li><li><span class="vaga">5</span><span class="jogador">Douglas</span></li><li><span class="vaga">6</span><span class="jogador">Junior</span></li></ul>
+        </div>
+        <div class="time">
+          <div class="time-cab"><span class="time-n">3</span><b>FRANÇA</b></div>
+          <ul><li><span class="vaga">GOL</span><span class="jogador">Robson</span></li><li><span class="vaga">1</span><span class="jogador">Vitão<span class="troca">entrou no lugar de Bel &middot; a partir do jogo 3</span></span></li><li><span class="vaga">2</span><span class="jogador">Victor O.</span></li><li><span class="vaga">3</span><span class="jogador">R. Palmieri</span></li><li><span class="vaga">4</span><span class="jogador">Naldo</span></li><li><span class="vaga">5</span><span class="jogador">Bolivia</span></li><li><span class="vaga">6</span><span class="jogador">Tatoh</span></li></ul>
+        </div>
+        <div class="time">
+          <div class="time-cab"><span class="time-n">4</span><b>PORTUGAL</b></div>
+          <ul><li><span class="vaga">GOL</span><span class="jogador">R. Hortega</span></li><li><span class="vaga">1</span><span class="jogador">R. Pardinho</span></li><li><span class="vaga">2</span><span class="jogador">Eduardo</span></li><li><span class="vaga">3</span><span class="jogador">Diego</span></li><li><span class="vaga">4</span><span class="jogador">F. Pardinho</span></li><li><span class="vaga">5</span><span class="jogador">Lucas</span></li><li><span class="vaga">6</span><span class="jogador">Claudinho</span></li></ul>
+        </div></div>
   </section>
 
   <section id="rodadas">
