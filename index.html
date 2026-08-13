@@ -145,6 +145,18 @@ tr.lider{background:var(--realce);}
 .jp.aguardando{color:var(--ink-3); background:transparent; border:1px dashed var(--linha);}
 .rodada li.futuro .jt{color:var(--ink-3);}
 
+/* ---------- uniforme ---------- */
+/* quadradinho colado no nome do time: branco de um lado, azul do outro.
+   E o que o atleta precisa levar na terca. */
+.cam{display:inline-block; width:9px; height:9px; position:relative; top:1px;
+  border:1px solid var(--linha);}
+.cam.br{background:#FFFFFF;}
+.cam.az{background:var(--tinta); border-color:var(--tinta);}
+.sumula-cor .cam{top:0;}
+.rodada.proxima{background:var(--realce);}
+.selo-prox{margin-left:7px; padding:1px 5px; background:var(--tinta); color:#FFFFFF;
+  font-weight:800; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;}
+
 .vazio{color:var(--ink-3); font-size:.85rem; padding:16px 10px; text-align:center;}
 .vazio.ok{color:var(--verde); font-weight:600;}
 td.alerta{color:var(--vermelho);}
@@ -207,15 +219,15 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
     <h2>Última rodada</h2>
     
       <div class="sumula">
-        <div class="sumula-lado"><span class="sumula-cor">branco</span><b>PORTUGAL</b></div>
+        <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>PORTUGAL</b></div>
         <div class="sumula-placar"><span class="sumula-gol vencedor">3</span><i>x</i><span class="sumula-gol">2</span></div>
-        <div class="sumula-lado dir"><span class="sumula-cor">azul</span><b>FRANÇA</b></div>
+        <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>FRANÇA</b></div>
         <div class="sumula-meta">jogo 7 &middot; rodada 4 &middot; 11/08/2026</div>
       </div>
       <div class="sumula">
-        <div class="sumula-lado"><span class="sumula-cor">branco</span><b>ALEMANHA</b></div>
+        <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>ALEMANHA</b></div>
         <div class="sumula-placar"><span class="sumula-gol vencedor">10</span><i>x</i><span class="sumula-gol">6</span></div>
-        <div class="sumula-lado dir"><span class="sumula-cor">azul</span><b>BRASIL</b></div>
+        <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>BRASIL</b></div>
         <div class="sumula-meta">jogo 8 &middot; rodada 4 &middot; 11/08/2026</div>
       </div>
   </section>
@@ -268,31 +280,33 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
 
   <section id="rodadas">
     <h2>Todos os jogos</h2>
-    <p class="dica">Duas partidas por terça. Todos se enfrentam duas vezes.</p>
+    <p class="dica">Duas partidas por terça. Todos se enfrentam duas vezes.
+      <b>Uniforme:</b> quem está à esquerda joga de branco <i class="cam br"></i>,
+      quem está à direita joga de azul <i class="cam az"></i>.</p>
     <div class="rodadas">
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 1</span><time>21/07/2026</time></div>
-          <ul><li><span class="jt dir ">FRANÇA</span><span class="jp">1<i>&ndash;</i>10</span><span class="jt forte">PORTUGAL</span></li><li><span class="jt dir forte">BRASIL</span><span class="jp">3<i>&ndash;</i>2</span><span class="jt ">ALEMANHA</span></li></ul>
+          <ul><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">1<i>&ndash;</i>10</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span></li><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> ALEMANHA</span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 2</span><time>28/07/2026</time></div>
-          <ul><li><span class="jt dir forte">BRASIL</span><span class="jp">4<i>&ndash;</i>2</span><span class="jt ">FRANÇA</span></li><li><span class="jt dir ">ALEMANHA</span><span class="jp">2<i>&ndash;</i>6</span><span class="jt forte">PORTUGAL</span></li></ul>
+          <ul><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span></li><li><span class="jt dir ">ALEMANHA <i class="cam br"></i></span><span class="jp">2<i>&ndash;</i>6</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 3</span><time>04/08/2026</time></div>
-          <ul><li><span class="jt dir ">BRASIL</span><span class="jp">4<i>&ndash;</i>4</span><span class="jt ">PORTUGAL</span></li><li><span class="jt dir ">FRANÇA</span><span class="jp">4<i>&ndash;</i>8</span><span class="jt forte">ALEMANHA</span></li></ul>
+          <ul><li><span class="jt dir ">BRASIL <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>4</span><span class="jt "><i class="cam az"></i> PORTUGAL</span></li><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>8</span><span class="jt forte"><i class="cam az"></i> ALEMANHA</span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 4</span><time>11/08/2026</time></div>
-          <ul><li><span class="jt dir forte">PORTUGAL</span><span class="jp">3<i>&ndash;</i>2</span><span class="jt ">FRANÇA</span></li><li><span class="jt dir forte">ALEMANHA</span><span class="jp">10<i>&ndash;</i>6</span><span class="jt ">BRASIL</span></li></ul>
+          <ul><li><span class="jt dir forte">PORTUGAL <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> FRANÇA</span></li><li><span class="jt dir forte">ALEMANHA <i class="cam br"></i></span><span class="jp">10<i>&ndash;</i>6</span><span class="jt "><i class="cam az"></i> BRASIL</span></li></ul>
         </div>
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 5</span><time>18/08/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">FRANÇA</span><span class="jp aguardando">&middot;</span><span class="jt">BRASIL</span></li><li class="futuro"><span class="jt dir">PORTUGAL</span><span class="jp aguardando">&middot;</span><span class="jt">ALEMANHA</span></li></ul>
+        <div class="rodada proxima">
+          <div class="rodada-cab"><span>rodada 5<b class="selo-prox">próxima</b></span><time>18/08/2026</time></div>
+          <ul><li class="futuro"><span class="jt dir">FRANÇA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span></li><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> ALEMANHA</span></li></ul>
         </div>
         <div class="rodada">
           <div class="rodada-cab"><span>rodada 6</span><time>25/08/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">PORTUGAL</span><span class="jp aguardando">&middot;</span><span class="jt">BRASIL</span></li><li class="futuro"><span class="jt dir">FRANÇA</span><span class="jp aguardando">&middot;</span><span class="jt">ALEMANHA</span></li></ul>
+          <ul><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span></li><li class="futuro"><span class="jt dir">FRANÇA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> ALEMANHA</span></li></ul>
         </div></div>
   </section>
 
