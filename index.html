@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="color-scheme" content="light">
+<meta name="color-scheme" content="light dark">
 <meta name="description" content="Classificação, artilharia e multas do Campeonato - Os Amigos.">
 <meta property="og:title" content="Campeonato - Os Amigos">
 <meta property="og:description" content="Classificação, artilharia e multas em aberto.">
@@ -14,7 +14,8 @@
 <body>
 <style>
 :root{
-  /* tema unico e claro: fundo branco, pedido do usuario */
+  color-scheme:light dark;
+  /* tema claro: fundo branco, do jeito que ele aprovou. E o padrao. */
   --papel:#FFFFFF; --cartao:#FFFFFF; --tinta:#16305C; --tinta-forte:#0C1D3C;
   --ink:#16223A; --ink-2:#4A5872; --ink-3:#6B7789; --linha:#C9D0DB; --linha-2:#E2E6ED;
   --barra:#2C5AA0; --barra-fundo:#EDF1F7;
@@ -22,6 +23,34 @@
   --vermelho:#9E1F1A; --vermelho-bg:#FADCDA; --vermelho-mk:#B3241F;
   --verde:#1F6B4F;
   --realce:#FFF6D6; --zebra:#F5F7FA;
+  /* texto escrito EM CIMA do azul, e o quadradinho do uniforme branco */
+  --sobre-tinta:#FFFFFF; --cam-branco:#FFFFFF; --cam-borda:#C9D0DB;
+}
+
+/* Tema escuro. Sem isso o navegador do celular inventa um por conta dele: ele
+   clareia todo azul-marinho e o quadradinho do uniforme azul fica lavado, quase
+   igual ao do branco. Declarando o tema, o navegador para de mexer. */
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --papel:#11151C; --cartao:#1A1F28; --tinta:#4C8DFF; --tinta-forte:#EAF0F8;
+    --ink:#DCE3EC; --ink-2:#A7B3C3; --ink-3:#8C98AC; --linha:#2F3945; --linha-2:#242C37;
+    --barra:#3E7BD1; --barra-fundo:#232B36;
+    --amarelo:#E7C570; --amarelo-bg:#3A3118; --amarelo-mk:#D9A400;
+    --vermelho:#F2938C; --vermelho-bg:#3E201E; --vermelho-mk:#D2564F;
+    --verde:#6FD1A5;
+    --realce:#2C2A1B; --zebra:#1E242E;
+    --sobre-tinta:#0B1220; --cam-branco:#FFFFFF; --cam-borda:#93A0B2;
+  }
+}
+:root[data-theme="dark"]{
+  --papel:#11151C; --cartao:#1A1F28; --tinta:#4C8DFF; --tinta-forte:#EAF0F8;
+  --ink:#DCE3EC; --ink-2:#A7B3C3; --ink-3:#8C98AC; --linha:#2F3945; --linha-2:#242C37;
+  --barra:#3E7BD1; --barra-fundo:#232B36;
+  --amarelo:#E7C570; --amarelo-bg:#3A3118; --amarelo-mk:#D9A400;
+  --vermelho:#F2938C; --vermelho-bg:#3E201E; --vermelho-mk:#D2564F;
+  --verde:#6FD1A5;
+  --realce:#2C2A1B; --zebra:#1E242E;
+  --sobre-tinta:#0B1220; --cam-branco:#FFFFFF; --cam-borda:#93A0B2;
 }
 
 *{box-sizing:border-box;}
@@ -68,10 +97,10 @@ h1{margin:0; font-size:clamp(1.7rem,5.2vw,2.6rem); line-height:1.05; color:var(-
   text-transform:uppercase; color:var(--tinta-forte); letter-spacing:-.01em;
   line-height:1.05; overflow-wrap:anywhere;}
 .sumula-placar{display:flex; align-items:center; gap:9px;}
-.sumula-gol{background:#FFFFFF; font-family:Consolas,ui-monospace,monospace; font-size:clamp(1.7rem,7vw,2.5rem);
+.sumula-gol{background:var(--cartao); font-family:Consolas,ui-monospace,monospace; font-size:clamp(1.7rem,7vw,2.5rem);
   line-height:1; color:var(--ink-2); border:1.5px solid var(--linha);
   padding:3px 11px; min-width:2.1em; text-align:center;}
-.sumula-gol.vencedor{color:#fff; background:var(--tinta); border-color:var(--tinta);}
+.sumula-gol.vencedor{color:var(--sobre-tinta); background:var(--tinta); border-color:var(--tinta);}
 .sumula-placar i{font-style:normal; color:var(--ink-3); font-size:.85rem;}
 .sumula-meta{grid-column:1/-1; border-top:1px dashed var(--linha);
   padding-top:8px; margin-top:4px; font-size:.7rem; text-transform:uppercase;
@@ -107,7 +136,7 @@ tr.lider{background:var(--realce);}
 .quad{display:inline-block; min-width:1.7em; padding:2px 0; text-align:center;
   font-family:Consolas,ui-monospace,monospace; font-size:.82rem;
   border:1px solid var(--linha); color:var(--ink-2);}
-.quad.lider{background:var(--tinta); border-color:var(--tinta); color:#fff; font-weight:700;}
+.quad.lider{background:var(--tinta); border-color:var(--tinta); color:var(--sobre-tinta); font-weight:700;}
 
 /* ---------- barras de gols ---------- */
 .barra-td{width:52%; min-width:150px;}
@@ -137,7 +166,7 @@ tr.lider{background:var(--realce);}
 .time-cab b{font-size:.95rem; font-weight:800; text-transform:uppercase;
   color:var(--tinta-forte); letter-spacing:-.01em;}
 .time-n{display:inline-block; min-width:1.6em; padding:1px 0; text-align:center;
-  background:var(--tinta); color:#FFFFFF; font-weight:700; font-size:.7rem;
+  background:var(--tinta); color:var(--sobre-tinta); font-weight:700; font-size:.7rem;
   font-family:Consolas,ui-monospace,monospace;}
 .time ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px;}
 .time li{display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:8px;
@@ -180,11 +209,11 @@ tr.lider{background:var(--realce);}
    E o que o atleta precisa levar na terca. */
 .cam{display:inline-block; width:9px; height:9px; position:relative; top:1px;
   border:1px solid var(--linha);}
-.cam.br{background:#FFFFFF;}
+.cam.br{background:var(--cam-branco); border-color:var(--cam-borda);}
 .cam.az{background:var(--tinta); border-color:var(--tinta);}
 .sumula-cor .cam{top:0;}
 .rodada.proxima{background:var(--realce);}
-.selo-prox{margin-left:7px; padding:1px 5px; background:var(--tinta); color:#FFFFFF;
+.selo-prox{margin-left:7px; padding:1px 5px; background:var(--tinta); color:var(--sobre-tinta);
   font-weight:800; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;}
 
 .vazio{color:var(--ink-3); font-size:.85rem; padding:16px 10px; text-align:center;}
@@ -236,7 +265,7 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
   <header>
     <p class="eyebrow">Campeonato de futsal &middot; Os Amigos</p>
     <h1 class="cond">Campeonato - Os Amigos</h1>
-    <p class="sub-h1">Classificação, artilharia e multas em aberto. Atualizado em 13/08/2026.</p>
+    <p class="sub-h1">Classificação, artilharia e multas em aberto. Atualizado em 18/08/2026.</p>
   </header>
 
   <dl class="faixa">
