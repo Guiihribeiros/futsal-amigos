@@ -157,6 +157,9 @@ tr.lider{background:var(--realce);}
 .chip.atraso i{background:var(--vermelho-mk);}
 .chip.avencer{color:var(--amarelo); background:var(--amarelo-bg);}
 .chip.avencer i{background:var(--amarelo-mk); border-radius:50%;}
+/* ultimo dia para pagar: nao esta atrasada, mas nao da para deixar passar */
+.chip.hoje{color:var(--vermelho); background:var(--vermelho-bg); font-weight:700;}
+.chip.hoje i{background:var(--vermelho-mk);}
 
 /* ---------- times ---------- */
 .times{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
@@ -735,7 +738,7 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
 
   <section id="multas">
     <h2>Multas em aberto</h2>
-    <p class="dica">Cada linha é uma multa, com o vencimento dela. Quem pagou sai da lista. Ausência R$ 20 &middot; amarelo R$ 15 &middot; amarelo + vermelho no mesmo jogo R$ 45 &middot; vermelho direto R$ 30. O prazo é de 15 dias a contar do jogo; na última rodada, 6 dias.</p>
+    <p class="dica">Cada linha é uma multa, com o vencimento dela. Quem pagou sai da lista. Ausência R$ 20 &middot; amarelo R$ 15 &middot; amarelo + vermelho no mesmo jogo R$ 45 &middot; vermelho direto R$ 30. O prazo é de 15 dias a contar do jogo, mas nada passa da última rodada do campeonato — o que vencer primeiro. Multa da própria última rodada: 6 dias.</p>
     <div class="rolagem">
       <table>
         <thead><tr>
@@ -743,32 +746,25 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
         </tr></thead>
         <tbody>
         <tr>
-          <td class="nome">Felipe<span class="sub">ALEMANHA</span></td>
-          <td class="motivo">1x amarelo<span class="sub">jogo 9</span></td>
-          <td class="n forte">R$ 15,00</td>
-          <td class="n discreto">02/09/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr>
-        <tr>
           <td class="nome">R. Pardinho<span class="sub">PORTUGAL</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 9</span></td>
           <td class="n forte">R$ 15,00</td>
-          <td class="n discreto">02/09/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
+          <td class="n discreto">25/08/2026</td>
+          <td><span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span></td>
         </tr>
         <tr>
           <td class="nome">Thiego<span class="sub">BRASIL</span></td>
           <td class="motivo">ausência<span class="sub">jogo 10</span></td>
           <td class="n forte">R$ 20,00</td>
-          <td class="n discreto">02/09/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
+          <td class="n discreto">25/08/2026</td>
+          <td><span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span></td>
         </tr>
         <tr>
           <td class="nome">Vitão<span class="sub">FRANÇA</span></td>
           <td class="motivo">ausência<span class="sub">jogo 7</span></td>
           <td class="n forte">R$ 20,00</td>
-          <td class="n discreto">26/08/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
+          <td class="n discreto">25/08/2026</td>
+          <td><span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span></td>
         </tr></tbody>
       </table>
     </div>
