@@ -54,6 +54,7 @@
 }
 
 *{box-sizing:border-box;}
+[hidden]{display:none !important;}
 body{
   margin:0; background:var(--papel); color:var(--ink);
   font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
@@ -298,7 +299,7 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
   <header>
     <p class="eyebrow">Campeonato de futsal &middot; Os Amigos</p>
     <h1 class="cond">Campeonato - Os Amigos</h1>
-    <p class="sub-h1">Classificação, artilharia e multas em aberto. Atualizado em 10/09/2026.</p>
+    <p class="sub-h1">Classificação, artilharia e multas em aberto. Atualizado em 15/09/2026.</p>
   </header>
 
   <section id="campeoes" class="campeoes">
@@ -712,62 +713,62 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <th>Atleta</th><th>Motivo</th><th>Valor</th><th>Vence em</th><th>Situação</th>
         </tr></thead>
         <tbody>
-        <tr>
+        <tr data-venc="2026-09-15">
+          <td class="nome">R. Faria<span class="sub">FRANÇA</span></td>
+          <td class="motivo">1x amarelo<span class="sub">jogo 2</span></td>
+          <td class="n forte">R$ 15,00</td>
+          <td class="n discreto">15/09/2026</td>
+          <td><span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span></td>
+        </tr>
+        <tr data-venc="2026-09-15">
+          <td class="nome">Robson<span class="sub">ALEMANHA</span></td>
+          <td class="motivo">ausência<span class="sub">jogo 1</span></td>
+          <td class="n forte">R$ 20,00</td>
+          <td class="n discreto">15/09/2026</td>
+          <td><span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span></td>
+        </tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">Alan<span class="sub">BRASIL</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 3</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
-        <tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">Bel<span class="sub">ALEMANHA</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 4</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
-        <tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">Bolivia<span class="sub">PORTUGAL</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 4</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
-        <tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">Eduardo<span class="sub">PORTUGAL</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 4</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
-        <tr>
-          <td class="nome">R. Faria<span class="sub">FRANÇA</span></td>
-          <td class="motivo">1x amarelo<span class="sub">jogo 2</span></td>
-          <td class="n forte">R$ 15,00</td>
-          <td class="n discreto">15/09/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr>
-        <tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">R. Palmieri<span class="sub">BRASIL</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 3</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
         </tr>
-        <tr>
-          <td class="nome">Robson<span class="sub">ALEMANHA</span></td>
-          <td class="motivo">ausência<span class="sub">jogo 1</span></td>
-          <td class="n forte">R$ 20,00</td>
-          <td class="n discreto">15/09/2026</td>
-          <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr>
-        <tr>
+        <tr data-venc="2026-09-22">
           <td class="nome">Thiaguinho<span class="sub">FRANÇA</span></td>
           <td class="motivo">1x amarelo<span class="sub">jogo 3</span></td>
           <td class="n forte">R$ 15,00</td>
           <td class="n discreto">22/09/2026</td>
           <td><span class="chip avencer"><i aria-hidden="true"></i>a vencer</span></td>
-        </tr></tbody>
+        </tr><tr data-vazio hidden><td colspan="5" class="vazio">Nenhuma multa em aberto dentro do prazo.</td></tr></tbody>
       </table>
     </div>
   </section>
@@ -781,37 +782,105 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <th>Atleta</th><th>Motivo</th><th>Valor</th><th>Venceu em</th><th>Atraso</th>
         </tr></thead>
         <tbody>
-        <tr>
+        <tr data-venc="2026-08-25">
           <td class="nome">Vitão<span class="sub">campeonato anterior</span></td>
           <td class="motivo">ausência<span class="sub">jogo 7</span></td>
           <td class="n forte alerta">R$ 20,00</td>
           <td class="n discreto">25/08/2026</td>
-          <td class="n"><span class="dias">16 dias</span></td>
+          <td class="n"><span class="dias">21 dias</span></td>
         </tr>
-        <tr>
+        <tr data-venc="2026-09-08">
           <td class="nome">Tatoh<span class="sub">campeonato anterior</span></td>
           <td class="motivo">ausência<span class="sub">jogo 11</span></td>
           <td class="n forte alerta">R$ 20,00</td>
           <td class="n discreto">08/09/2026</td>
-          <td class="n"><span class="dias">2 dias</span></td>
+          <td class="n"><span class="dias">7 dias</span></td>
         </tr>
-        <tr>
+        <tr data-venc="2026-09-08">
           <td class="nome">Vitão<span class="sub">campeonato anterior</span></td>
           <td class="motivo">ausência<span class="sub">jogo 11</span></td>
           <td class="n forte alerta">R$ 20,00</td>
           <td class="n discreto">08/09/2026</td>
-          <td class="n"><span class="dias">2 dias</span></td>
-        </tr></tbody>
+          <td class="n"><span class="dias">7 dias</span></td>
+        </tr><tr data-vazio hidden><td colspan="5" class="vazio ok">Ninguém com multa vencida — todo mundo em dia com o prazo.</td></tr></tbody>
       </table>
     </div>
   </section>
 
+
+  <p class="dica recalc" hidden>A situação de cada multa é recalculada no seu aparelho,
+      então vale para hoje mesmo que a página tenha sido gerada antes.</p>
 
   <footer>
     <p><b>De onde vêm estes números:</b> da planilha de controle da diretoria. Esta página é um retrato dela — se um jogo acabou de ser lançado, pode ainda não estar aqui.</p>
     <p>Divergência no placar, num gol ou numa multa? Fale com a diretoria para conferir a súmula.</p>
   </footer>
 </div>
+<script>
+/* A pagina e um retrato: "vence hoje" e "em atraso (N dias)" congelavam no dia em que eu
+   gerava o arquivo. Ele pegou isso com multas vencendo hoje ainda marcadas "a vencer",
+   cinco dias depois da geracao. Aqui a situacao e recalculada no aparelho de quem abre,
+   a partir da data de vencimento de cada linha - e a linha e remanejada para a tabela
+   certa, porque virar atraso muda de secao, nao so de etiqueta.
+
+   O que NAO e recalculado: quem deve o que. Isso vem da planilha e continua sendo do dia
+   da geracao - quem pagou ontem so sai da lista na proxima atualizacao. */
+(function () {
+  var hoje = new Date(); hoje.setHours(0, 0, 0, 0);
+  function diasDe(iso) {
+    var p = String(iso).split("-");
+    if (p.length !== 3) { return null; }
+    var d = new Date(+p[0], +p[1] - 1, +p[2]);
+    if (isNaN(d.getTime())) { return null; }
+    d.setHours(0, 0, 0, 0);
+    return Math.round((hoje - d) / 86400000);
+  }
+  var tbAV = document.querySelector("#multas tbody");
+  var tbVC = document.querySelector("#vencidas tbody");
+  if (!tbAV || !tbVC) { return; }
+  var linhas = [].slice.call(document.querySelectorAll("tr[data-venc]"));
+  if (!linhas.length) { return; }
+
+  var aVencer = [], vencidas = [];
+  linhas.forEach(function (tr) {
+    var n = diasDe(tr.getAttribute("data-venc"));
+    if (n === null) { aVencer.push(tr); return; }
+    var valor = tr.cells[2], sit = tr.cells[4];
+    if (n > 0) {
+      valor.className = "n forte alerta";
+      sit.className = "n";
+      sit.innerHTML = '<span class="dias">' + (n === 1 ? "1 dia" : n + " dias") + "</span>";
+      tr.setAttribute("data-ord", n);
+      vencidas.push(tr);
+    } else {
+      valor.className = "n forte";
+      sit.className = "";
+      sit.innerHTML = n === 0
+        ? '<span class="chip hoje"><i aria-hidden="true"></i>vence hoje</span>'
+        : '<span class="chip avencer"><i aria-hidden="true"></i>a vencer</span>';
+      tr.setAttribute("data-ord", -n);
+      aVencer.push(tr);
+    }
+  });
+  function ord(tr) { return +(tr.getAttribute("data-ord") || 0); }
+  aVencer.sort(function (a, b) { return ord(a) - ord(b); });   /* vence antes na frente */
+  vencidas.sort(function (a, b) { return ord(b) - ord(a); });  /* mais atrasado na frente */
+  aVencer.forEach(function (tr) { tbAV.appendChild(tr); });
+  vencidas.forEach(function (tr) { tbVC.appendChild(tr); });
+
+  [[tbAV, aVencer.length], [tbVC, vencidas.length]].forEach(function (par) {
+    var vazio = par[0].querySelector("tr[data-vazio]");
+    if (vazio) { vazio.hidden = par[1] > 0; par[0].appendChild(vazio); }
+  });
+  var caixa = document.querySelector("#vencidas .rolagem");
+  if (caixa) {
+    if (vencidas.length) { caixa.classList.add("alerta"); }
+    else { caixa.classList.remove("alerta"); }
+  }
+  var aviso = document.querySelector(".dica.recalc");
+  if (aviso) { aviso.hidden = false; }
+})();
+</script>
 
 </body>
 </html>
