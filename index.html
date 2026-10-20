@@ -286,6 +286,8 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
   /* artilharia: fica POS, ATLETA, GOLS */
   #artilharia th:nth-child(4),#artilharia td:nth-child(4),
   #artilharia th:nth-child(5),#artilharia td:nth-child(5){display:none;}
+  #garcom th:nth-child(4),#garcom td:nth-child(4),
+  #garcom th:nth-child(5),#garcom td:nth-child(5){display:none;}
   .barra-td{width:auto; min-width:96px;}
   /* multas: fica ATLETA (com o vencimento embaixo), EM ABERTO, SITUACAO */
   #multas th:nth-child(2),#multas td:nth-child(2),
@@ -626,6 +628,21 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <td class="n discreto">1</td>
           <td class="n discreto">1,00</td>
         </tr></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="garcom">
+    <h2>Troféu do Garçom</h2>
+    <p class="dica">Quem deu o passe do gol neste campeonato. Desempate: 1) assistências
+      2) menos jogos disputados. A contagem começou no C3 — os campeonatos anteriores não
+      registravam assistência.</p>
+    <div class="rolagem">
+      <table>
+        <thead><tr>
+          <th>#</th><th>Atleta</th><th style="text-align:left">Assistências</th><th>Jogos</th><th>Média</th>
+        </tr></thead>
+        <tbody><tr><td colspan="5" class="vazio">Nenhuma assistência lançada ainda.</td></tr></tbody>
       </table>
     </div>
   </section>
