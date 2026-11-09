@@ -56,7 +56,7 @@ a{color:var(--marinho);}
 .topo-in{display:flex; align-items:center; gap:20px; height:56px;}
 .marca{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--titulo);
   font-family:Cinzel,Georgia,serif; font-weight:800; font-size:1.05rem; letter-spacing:.04em; flex:0 0 auto;}
-.menu{display:flex; gap:4px; margin-left:auto; overflow-x:auto; scrollbar-width:none;}
+.menu{display:flex; gap:4px; margin-left:auto; overflow-x:auto; min-width:0; scrollbar-width:none;}
 .menu::-webkit-scrollbar{display:none;}
 .menu a{font-family:Montserrat,system-ui,sans-serif; font-weight:700; font-size:.78rem;
   text-transform:uppercase; letter-spacing:.06em; color:var(--ink-2); text-decoration:none;
@@ -450,10 +450,14 @@ body{background:
 .reels .lance-tit{font-size:.76rem;}
 @media (max-width:600px){ .reels{grid-auto-columns:46%;} }
 
-/* celular: o menu passa da tela; o esmaecido na borda direita mostra que da para arrastar */
+/* celular: o menu passa da tela e anda sozinho (script.js). Esmaecido nas duas bordas para o
+   texto entrar e sair suave. */
 @media (max-width:600px){
   .menu{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);
         mask-image:linear-gradient(90deg,#000 82%,transparent); padding-right:28px;}
+  .menu.passando{padding-right:0; scroll-behavior:auto;
+        -webkit-mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);
+        mask-image:linear-gradient(90deg,transparent,#000 5%,#000 88%,transparent);}
   .menu a{letter-spacing:.03em;}
 }
 </style>
@@ -919,17 +923,58 @@ body{background:
   els.forEach(function (el) { io.observe(el); });
 })();
 
-/* Menu: destaca a secao que esta na tela */
+/* Menu passando sozinho no celular (pedido dele, 09/11/2026: a maioria abre pelo celular e
+   "Lances"/"Multas" ficavam escondidos fora da tela). Duplica os links e rola devagar em loop;
+   ao chegar na metade volta meia volta sem salto visivel. Encostou o dedo, para e deixa
+   arrastar; volta a andar 4s depois. No computador (cabe tudo) e com movimento reduzido, parado. */
+(function () {
+  var menu = document.querySelector(".menu");
+  if (!menu || !window.matchMedia) { return; }
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { return; }
+  var celular = window.matchMedia("(max-width:600px)");
+  if (!celular.matches || menu.scrollWidth <= menu.clientWidth + 4) { return; }
+  [].slice.call(menu.children).forEach(function (a) {
+    var c = a.cloneNode(true);
+    c.setAttribute("aria-hidden", "true"); c.tabIndex = -1;
+    menu.appendChild(c);
+  });
+  menu.classList.add("passando");
+  var VEL = 22;            /* pixels por segundo: devagar, da para ler */
+  var parado = false, volta, pos = menu.scrollLeft;
+  function para() { parado = true; clearTimeout(volta); }
+  function solta() { clearTimeout(volta); volta = setTimeout(function () { parado = false; pos = menu.scrollLeft; }, 4000); }
+  menu.addEventListener("touchstart", para, { passive: true });
+  menu.addEventListener("touchend", solta, { passive: true });
+  menu.addEventListener("mouseenter", para);
+  menu.addEventListener("mouseleave", solta);
+  menu.addEventListener("focusin", para);
+  /* temporizador simples (30 quadros/s) em vez de requestAnimationFrame: anda igual em
+     qualquer celular e da para testar no navegador sem tela */
+  var antes = Date.now();
+  setInterval(function () {
+    var agora = Date.now(), dt = Math.min(agora - antes, 100); antes = agora;
+    if (parado || document.hidden) { return; }
+    var meio = menu.scrollWidth / 2;
+    pos += VEL * dt / 1000;
+    if (pos >= meio) { pos -= meio; }
+    menu.scrollLeft = pos;
+  }, 33);
+})();
+
+/* Menu: destaca a secao que esta na tela (inclui as copias do menu que passa no celular) */
 (function () {
   var links = [].slice.call(document.querySelectorAll(".menu a"));
   if (!("IntersectionObserver" in window) || !links.length) { return; }
   var mapa = {};
-  links.forEach(function (a) { mapa[a.getAttribute("href").slice(1)] = a; });
+  links.forEach(function (a) {
+    var id = a.getAttribute("href").slice(1);
+    (mapa[id] = mapa[id] || []).push(a);
+  });
   var io = new IntersectionObserver(function (ents) {
     ents.forEach(function (en) {
       if (en.isIntersecting && mapa[en.target.id]) {
         links.forEach(function (a) { a.classList.remove("ativo"); });
-        mapa[en.target.id].classList.add("ativo");
+        mapa[en.target.id].forEach(function (a) { a.classList.add("ativo"); });
       }
     });
   }, { rootMargin: "-45% 0px -50% 0px" });
