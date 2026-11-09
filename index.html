@@ -449,6 +449,13 @@ body{background:
 .reels{grid-auto-columns:168px; scroll-behavior:smooth;}
 .reels .lance-tit{font-size:.76rem;}
 @media (max-width:600px){ .reels{grid-auto-columns:46%;} }
+
+/* celular: o menu passa da tela; o esmaecido na borda direita mostra que da para arrastar */
+@media (max-width:600px){
+  .menu{-webkit-mask-image:linear-gradient(90deg,#000 82%,transparent);
+        mask-image:linear-gradient(90deg,#000 82%,transparent); padding-right:28px;}
+  .menu a{letter-spacing:.03em;}
+}
 </style>
 </head>
 <body>
