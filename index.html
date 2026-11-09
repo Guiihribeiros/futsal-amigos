@@ -4,308 +4,501 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<meta name="color-scheme" content="light dark">
-<meta name="description" content="Classificação, artilharia e multas do Campeonato - Os Amigos.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#0B0D0C">
+<meta name="description" content="Classificação, jogos, artilharia e lances do Campeonato - Os Amigos.">
 <meta property="og:title" content="Campeonato - Os Amigos">
-<meta property="og:description" content="Classificação, artilharia e multas em aberto.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 16 16%27%3E%3Ctext y=%2713%27 font-size=%2713%27%3E%E2%9A%BD%3C/text%3E%3C/svg%3E">
+<meta property="og:description" content="Classificação, jogos, artilharia e lances. Atualizado toda semana.">
+<meta property="og:image" content="img/escudo-os-amigos.png">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/escudo-os-amigos.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
 <title>Campeonato - Os Amigos</title>
-</head>
-<body>
-<style>
+<style>/* Os Amigos - visual novo (nov/2026).
+   Estrutura com a cara da GS na Area (preto, grafite e verde-lima): e ela quem cuida do site.
+   Conteudo com a identidade do Os Amigos: escudo e dourado para campeao, lider e podio.
+   Tema unico escuro, de proposito: a marca GS so existe no escuro. */
 :root{
-  color-scheme:light dark;
-  /* tema claro: fundo branco, do jeito que ele aprovou. E o padrao. */
-  --papel:#FFFFFF; --cartao:#FFFFFF; --tinta:#16305C; --tinta-forte:#0C1D3C;
-  --ink:#16223A; --ink-2:#4A5872; --ink-3:#6B7789; --linha:#C9D0DB; --linha-2:#E2E6ED;
-  --barra:#2C5AA0; --barra-fundo:#EDF1F7;
-  --amarelo:#8A6800; --amarelo-bg:#FBF0CE; --amarelo-mk:#D9A400;
-  --vermelho:#9E1F1A; --vermelho-bg:#FADCDA; --vermelho-mk:#B3241F;
-  --verde:#1F6B4F;
-  --realce:#FFF6D6; --zebra:#F5F7FA;
-  /* texto escrito EM CIMA do azul, e o quadradinho do uniforme branco */
-  --sobre-tinta:#FFFFFF; --cam-branco:#FFFFFF; --cam-borda:#C9D0DB;
-}
-
-/* Tema escuro. Sem isso o navegador do celular inventa um por conta dele: ele
-   clareia todo azul-marinho e o quadradinho do uniforme azul fica lavado, quase
-   igual ao do branco. Declarando o tema, o navegador para de mexer. */
-@media (prefers-color-scheme: dark){
-  :root:not([data-theme="light"]){
-    --papel:#11151C; --cartao:#1A1F28; --tinta:#4C8DFF; --tinta-forte:#EAF0F8;
-    --ink:#DCE3EC; --ink-2:#A7B3C3; --ink-3:#8C98AC; --linha:#2F3945; --linha-2:#242C37;
-    --barra:#3E7BD1; --barra-fundo:#232B36;
-    --amarelo:#E7C570; --amarelo-bg:#3A3118; --amarelo-mk:#D9A400;
-    --vermelho:#F2938C; --vermelho-bg:#3E201E; --vermelho-mk:#D2564F;
-    --verde:#6FD1A5;
-    --realce:#2C2A1B; --zebra:#1E242E;
-    --sobre-tinta:#0B1220; --cam-branco:#FFFFFF; --cam-borda:#93A0B2;
-  }
-}
-:root[data-theme="dark"]{
-  --papel:#11151C; --cartao:#1A1F28; --tinta:#4C8DFF; --tinta-forte:#EAF0F8;
-  --ink:#DCE3EC; --ink-2:#A7B3C3; --ink-3:#8C98AC; --linha:#2F3945; --linha-2:#242C37;
-  --barra:#3E7BD1; --barra-fundo:#232B36;
+  color-scheme:dark;
+  --fundo:#0B0D0C; --cartao:#141816;
+  --marinho:#A6F000; --marinho-forte:#26302A; --titulo:#F2F5EE;
+  --ouro:#E8B85A; --ouro-txt:#EBC271; --ouro-bg:#2A2414;
+  --ink:#E3E8DF; --ink-2:#AEB6A8; --ink-3:#8A9385; --linha:#2A302B; --linha-2:#1F2421; --zebra:#171B19;
   --amarelo:#E7C570; --amarelo-bg:#3A3118; --amarelo-mk:#D9A400;
   --vermelho:#F2938C; --vermelho-bg:#3E201E; --vermelho-mk:#D2564F;
-  --verde:#6FD1A5;
-  --realce:#2C2A1B; --zebra:#1E242E;
-  --sobre-tinta:#0B1220; --cam-branco:#FFFFFF; --cam-borda:#93A0B2;
+  --verde:#B5F23D; --verde-bg:#24331A;
+  --cinza-bg:#232925;
+  --cam-branco:#FFFFFF; --cam-borda:#9AA394; --cam-azul:#4C7FE6;
+  --topo-bg:rgba(11,13,12,.9); --sombra:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.25);
+  --hero-1:#0F1310; --hero-2:#1B231C; --sobre-escuro:#FFFFFF; --sobre-escuro-2:#B9C2B0;
+  --gs-preto:#0B0D0C; --gs-lima:#A6F000;
 }
 
 *{box-sizing:border-box;}
 [hidden]{display:none !important;}
-body{
-  margin:0; background:var(--papel); color:var(--ink);
+html{scroll-behavior:smooth; scroll-padding-top:64px;}
+body{margin:0; background:var(--fundo); color:var(--ink);
   font-family:"Segoe UI",system-ui,-apple-system,"Helvetica Neue",sans-serif;
-  font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
-}
-.wrap{max-width:920px; margin:0 auto; padding:28px 20px 64px;}
-/* sem fonte condensada: a anterior ficava dura de ler */
-.cond{font-weight:800; letter-spacing:-.005em;}
-.mono{font-family:Consolas,"SFMono-Regular",Menlo,ui-monospace,monospace;}
-.n,.jp,.barra-valor,td.n,time{font-variant-numeric:tabular-nums;}
+  font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;}
+img{max-width:100%; display:block;}
+a{color:var(--marinho);}
+:focus-visible{outline:2px solid var(--ouro); outline-offset:2px;}
+.wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+.n,.jp,td.n,time,.placar-gols,.numeros dd{font-variant-numeric:tabular-nums;}
+.discreto{color:var(--ink-3);}
 
-/* ---------- cabecalho ---------- */
-header{border-top:3px solid var(--tinta); padding-top:14px; margin-bottom:26px;}
-.eyebrow{font-size:.7rem; text-transform:uppercase; letter-spacing:.16em;
-  color:var(--ink-3); margin:0 0 6px;}
-h1{margin:0; font-size:clamp(1.7rem,5.2vw,2.6rem); line-height:1.05; color:var(--tinta-forte);
-  text-transform:uppercase; text-wrap:balance; letter-spacing:-.01em;}
-.sub-h1{margin:8px 0 0; color:var(--ink-2); font-size:.9rem;}
+/* ---------- menu fixo ---------- */
+.topo{position:sticky; top:0; z-index:20; background:var(--topo-bg);
+  backdrop-filter:saturate(1.4) blur(10px); -webkit-backdrop-filter:saturate(1.4) blur(10px);
+  border-bottom:1px solid var(--linha);}
+.topo-in{display:flex; align-items:center; gap:20px; height:56px;}
+.marca{display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--titulo);
+  font-family:Cinzel,Georgia,serif; font-weight:800; font-size:1.05rem; letter-spacing:.04em; flex:0 0 auto;}
+.menu{display:flex; gap:4px; margin-left:auto; overflow-x:auto; scrollbar-width:none;}
+.menu::-webkit-scrollbar{display:none;}
+.menu a{font-family:Montserrat,system-ui,sans-serif; font-weight:700; font-size:.78rem;
+  text-transform:uppercase; letter-spacing:.06em; color:var(--ink-2); text-decoration:none;
+  padding:7px 11px; border-radius:999px; white-space:nowrap; transition:background .15s,color .15s;}
+.menu a:hover{background:var(--cinza-bg); color:var(--titulo);}
+.menu a.ativo{background:var(--marinho-forte); color:#fff;}
 
-/* ---------- faixa de numeros ---------- */
-.faixa{display:grid; grid-template-columns:repeat(auto-fit,minmax(132px,1fr));
-  gap:1px; background:var(--linha); border:1px solid var(--linha);
-  margin:22px 0 34px;}
-.tile{background:var(--cartao); padding:13px 15px;}
-.tile dt{font-size:.66rem; text-transform:uppercase; letter-spacing:.12em;
-  color:var(--ink-3); margin:0 0 5px;}
-.tile dd{margin:0; font-size:1.6rem; line-height:1.05; color:var(--tinta-forte);}
-.tile dd small{font-size:.78rem; color:var(--ink-3); font-weight:400;}
-/* o nome do artilheiro e texto, nao numero: cabe menor e pode quebrar */
-.tile.artilheiro dd{font-size:1.15rem; line-height:1.15; overflow-wrap:anywhere;}
-.tile.artilheiro dd small{display:block; margin-top:2px;}
-
-/* ---------- quadro do campeao do ultimo campeonato (permanente) ----------
-   Usa os tokens do amarelo que ja existem nos dois temas: nada de cor chumbada,
-   senao no celular de tema escuro o quadro fica lavado como o azul ficou. */
-.campeoes{margin:22px 0 0; border:2px solid var(--amarelo-mk); background:var(--realce);}
-.campeoes h2{margin:0; padding:11px 15px 6px; border-bottom:0;}
-.campeoes-de{margin:0; padding:0 15px 11px; font-size:.72rem;
-  text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3);
-  border-bottom:1px solid var(--amarelo-mk);}
-.premios{display:grid; grid-template-columns:repeat(auto-fit,minmax(188px,1fr));
-  gap:1px; background:var(--amarelo-mk);}
-.premio{background:var(--cartao); padding:14px 15px;}
-.premio-rot{margin:0 0 6px; font-size:.63rem; text-transform:uppercase;
-  letter-spacing:.13em; color:var(--amarelo); font-weight:700;}
-.premio-nome{margin:0; font-size:1.28rem; line-height:1.1; font-weight:800;
-  color:var(--tinta-forte); text-transform:uppercase; overflow-wrap:anywhere;
-  letter-spacing:-.01em;}
-.premio-det{margin:4px 0 0; font-size:.82rem; color:var(--ink-2);
-  font-variant-numeric:tabular-nums;}
-/* a observacao explica um critério que nao esta na regra — sem ela o grupo compara
-   com a tabela de goleiros, ve outro nome em 1o e acha que a pagina errou */
-.premio-obs{margin:8px 0 0; padding-top:7px; border-top:1px dashed var(--linha);
-  font-size:.7rem; line-height:1.4; color:var(--ink-3);}
-
-/* o horario e a ordem do jogo na rodada: 1o jogo abre a terca, 2o vem depois */
-.hora{display:inline-block; margin-right:8px; padding:1px 6px;
-  border:1px solid var(--linha); font-family:Consolas,ui-monospace,monospace;
-  font-variant-numeric:tabular-nums; color:var(--ink-2); font-style:normal;
-  letter-spacing:0;}
-
-/* ---------- placar tipo sumula ---------- */
-.sumula{border:2px solid var(--tinta); background:var(--cartao);
-  display:grid; grid-template-columns:1fr auto 1fr; align-items:center;
-  gap:10px; padding:16px 14px 12px; margin-bottom:10px;}
-.sumula-lado{display:flex; flex-direction:column; gap:2px; min-width:0;}
-.sumula-lado.dir{align-items:flex-end; text-align:right;}
-.sumula-cor{font-size:.6rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-3);}
-.sumula-lado b{font-weight:800; font-size:clamp(1.05rem,4.2vw,1.55rem);
-  text-transform:uppercase; color:var(--tinta-forte); letter-spacing:-.01em;
-  line-height:1.05; overflow-wrap:anywhere;}
-.sumula-placar{display:flex; align-items:center; gap:9px;}
-.sumula-gol{background:var(--cartao); font-family:Consolas,ui-monospace,monospace; font-size:clamp(1.7rem,7vw,2.5rem);
-  line-height:1; color:var(--ink-2); border:1.5px solid var(--linha);
-  padding:3px 11px; min-width:2.1em; text-align:center;}
-.sumula-gol.vencedor{color:var(--sobre-tinta); background:var(--tinta); border-color:var(--tinta);}
-.sumula-placar i{font-style:normal; color:var(--ink-3); font-size:.85rem;}
-.sumula-meta{grid-column:1/-1; border-top:1px dashed var(--linha);
-  padding-top:8px; margin-top:4px; font-size:.7rem; text-transform:uppercase;
-  letter-spacing:.1em; color:var(--ink-3);}
+/* ---------- hero ---------- */
+.hero{color:var(--sobre-escuro); position:relative; overflow:hidden;
+  background:
+    radial-gradient(700px 380px at 85% -10%, rgba(226,174,72,.28), transparent 60%),
+    radial-gradient(600px 400px at 0% 110%, rgba(91,139,234,.25), transparent 60%),
+    linear-gradient(135deg,var(--hero-1),var(--hero-2));}
+/* linhas da quadra ao fundo */
+.hero::before{content:""; position:absolute; inset:0; opacity:.06; pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 118px, #fff 119px, #fff 121px, transparent 122px),
+    linear-gradient(90deg, transparent calc(50% - 1px), #fff calc(50% - 1px), #fff calc(50% + 1px), transparent calc(50% + 1px));}
+.hero-in{position:relative; display:grid; grid-template-columns:auto minmax(0,1fr); gap:20px 32px;
+  align-items:center; padding-top:44px; padding-bottom:40px;}
+.escudo{width:180px; height:180px; filter:drop-shadow(0 10px 30px rgba(0,0,0,.45));}
+.eyebrow{margin:0 0 6px; font-family:Montserrat,system-ui,sans-serif; font-weight:700; font-size:.74rem;
+  text-transform:uppercase; letter-spacing:.2em; color:var(--ouro);}
+.hero h1{margin:0; font-family:Cinzel,Georgia,serif; font-weight:800; line-height:.95;
+  font-size:clamp(2.6rem,8vw,5rem); letter-spacing:.02em; text-shadow:0 4px 24px rgba(0,0,0,.35);}
+.edicao{margin:10px 0 0; color:var(--sobre-escuro-2); font-size:.95rem;}
+.numeros{grid-column:1/-1; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin:12px 0 0;}
+.numeros div{background:rgba(255,255,255,.07); border:1px solid rgba(255,255,255,.14);
+  border-radius:14px; padding:14px 16px; min-width:0;}
+.numeros dt{font-family:Montserrat,system-ui,sans-serif; font-size:.66rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.14em; color:var(--sobre-escuro-2); margin:0 0 4px;}
+.numeros dd{margin:0; font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:2rem; line-height:1.05;}
+.numeros dd small{font-size:.9rem; font-weight:600; color:var(--sobre-escuro-2);}
+.numeros dd.txt{font-size:1.25rem; overflow-wrap:anywhere; text-transform:uppercase;}
+.numeros dd.txt small{display:block; text-transform:none; font-size:.8rem; margin-top:3px;}
+.prox{grid-column:1/-1; border-radius:14px; padding:14px 18px;
+  background:linear-gradient(90deg,rgba(226,174,72,.2),rgba(226,174,72,.05));
+  border:1px solid rgba(226,174,72,.45);}
+.prox-rot{margin:0 0 8px; font-family:Montserrat,system-ui,sans-serif; font-weight:700; font-size:.72rem;
+  text-transform:uppercase; letter-spacing:.14em; color:var(--ouro);}
+.prox ul{list-style:none; margin:0; padding:0; display:grid; gap:6px;}
+.prox li{display:grid; grid-template-columns:56px minmax(0,1fr) auto minmax(0,1fr); gap:10px; align-items:center;
+  font-family:Montserrat,system-ui,sans-serif; font-weight:700; text-transform:uppercase; font-size:.95rem;}
+.ph{font-variant-numeric:tabular-nums; color:var(--sobre-escuro-2); font-size:.82rem;}
+.pt.dir{text-align:right;}
+.px{color:var(--ouro); font-size:.8rem;}
 
 /* ---------- secoes ---------- */
-section{margin-top:40px;}
-/* os h2 usam a fonte de corpo: a condensada fica ilegivel em tamanho pequeno */
-h2{margin:0 0 4px; font-size:1.02rem; font-weight:700; text-transform:uppercase;
-  letter-spacing:.08em; color:var(--tinta-forte); padding-bottom:7px;
-  border-bottom:1px solid var(--linha);}
-.dica{margin:9px 0 14px; font-size:.8rem; color:var(--ink-3);}
-.rolagem{overflow-x:auto; border:1px solid var(--linha); background:var(--cartao);}
-table{width:100%; border-collapse:collapse; min-width:520px;}
-table.curta{min-width:300px;}
-thead th{font-size:.63rem; text-transform:uppercase; letter-spacing:.11em;
-  color:var(--ink-3); font-weight:600; text-align:right; padding:9px 8px;
-  border-bottom:1.5px solid var(--linha); white-space:nowrap;}
+main{padding-top:8px;}
+section{margin-top:56px;}
+.sec-cab{margin-bottom:16px;}
+.sec-cab h2{margin:0; font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:clamp(1.35rem,3vw,1.75rem);
+  color:var(--titulo); letter-spacing:-.01em; display:flex; align-items:center; gap:12px;}
+.sec-cab h2::before{content:""; width:6px; height:1.05em; border-radius:3px; background:var(--ouro); flex:0 0 auto;}
+.sec-cab p{margin:6px 0 0; color:var(--ink-2); font-size:.88rem; max-width:78ch;}
+.cartao{background:var(--cartao); border:1px solid var(--linha); border-radius:14px; box-shadow:var(--sombra);}
+.vazio{color:var(--ink-3); font-size:.88rem; padding:18px 10px; text-align:center;}
+.vazio.ok{color:var(--verde); font-weight:600;}
+
+/* ---------- campeoes ---------- */
+.campeoes{margin-top:-28px; position:relative; z-index:2; background:var(--cartao);
+  border:1.5px solid var(--ouro); border-radius:18px; box-shadow:var(--sombra); overflow:hidden;}
+.campeoes-cab{display:flex; align-items:center; gap:14px; padding:16px 20px;
+  background:linear-gradient(90deg,var(--ouro-bg),transparent);}
+.trofeu{font-size:2rem; line-height:1;}
+.campeoes h2{margin:0; font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:1.1rem; color:var(--titulo);}
+.campeoes-de{margin:2px 0 0; font-size:.74rem; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3);}
+.premios{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:1px; background:var(--linha-2);
+  border-top:1px solid var(--linha-2);}
+.premio{background:var(--cartao); padding:14px 20px 16px;}
+.premio-rot{margin:0 0 4px; font-size:.66rem; text-transform:uppercase; letter-spacing:.14em; color:var(--ouro-txt); font-weight:700;}
+.premio-nome{margin:0; font-family:Montserrat,system-ui,sans-serif; font-size:1.2rem; font-weight:800;
+  color:var(--titulo); text-transform:uppercase; overflow-wrap:anywhere;}
+.premio.principal .premio-nome{font-size:1.45rem;}
+.premio-det{margin:2px 0 0; font-size:.84rem; color:var(--ink-2); font-variant-numeric:tabular-nums;}
+.premio-obs{margin:8px 0 0; padding-top:7px; border-top:1px dashed var(--linha); font-size:.72rem; line-height:1.4; color:var(--ink-3);}
+
+/* ---------- placares ---------- */
+.placares{display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:14px;}
+.placar{border-radius:18px; padding:16px 18px 18px; color:var(--sobre-escuro);
+  background:linear-gradient(140deg,var(--hero-1),var(--hero-2)); box-shadow:var(--sombra);}
+.placar-meta{margin:0 0 12px; font-size:.7rem; text-transform:uppercase; letter-spacing:.12em; color:var(--sobre-escuro-2);}
+.placar-corpo{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:10px;}
+.placar-time{display:flex; flex-direction:column; gap:3px; min-width:0;}
+.placar-time.dir{align-items:flex-end; text-align:right;}
+.placar-time b{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:clamp(1rem,3.6vw,1.3rem);
+  text-transform:uppercase; overflow-wrap:anywhere; line-height:1.1; color:var(--sobre-escuro-2);}
+.placar-time.venceu b{color:#fff;}
+.uni{font-size:.62rem; text-transform:uppercase; letter-spacing:.12em; color:var(--sobre-escuro-2); display:inline-flex; gap:5px; align-items:center;}
+.placar-gols{display:flex; align-items:center; gap:8px; font-family:Montserrat,system-ui,sans-serif; font-weight:800;}
+.placar-gols span{font-size:clamp(2rem,7vw,2.6rem); line-height:1; min-width:1.4em; text-align:center;
+  padding:6px 8px; border-radius:10px; background:rgba(255,255,255,.08); color:var(--sobre-escuro-2);}
+.placar-gols span.venceu{background:var(--ouro); color:#1A1404;}
+.placar-gols i{font-style:normal; color:var(--sobre-escuro-2); font-size:.9rem;}
+
+/* ---------- tabelas ---------- */
+.rolagem{overflow-x:auto;}
+table{width:100%; border-collapse:collapse; min-width:560px;}
+table.curta{min-width:0;}
+thead th{font-size:.64rem; text-transform:uppercase; letter-spacing:.11em; color:var(--ink-3); font-weight:700;
+  text-align:right; padding:11px 10px; border-bottom:1.5px solid var(--linha); white-space:nowrap;}
 thead th:nth-child(1),thead th:nth-child(2){text-align:left;}
-td{padding:9px 8px; border-bottom:1px solid var(--linha-2); text-align:right;}
+td{padding:11px 10px; border-bottom:1px solid var(--linha-2); text-align:right;}
 tbody tr:last-child td{border-bottom:0;}
-td.nome,td.motivo,td.pos{text-align:left;}
-td.nome{font-weight:600; color:var(--ink); line-height:1.2;}
-td.nome .sub{display:block; font-size:.68rem; font-weight:400; color:var(--ink-3);
-  text-transform:uppercase; letter-spacing:.07em;}
-td.motivo{font-size:.8rem; color:var(--ink-2);}
-/* quem pagou parte: o valor ao lado e o saldo, nao o total do campeonato */
-td.motivo .sub{display:block; margin-top:2px; font-size:.68rem; color:var(--ink-3);}
-td.n{font-family:Consolas,ui-monospace,monospace; color:var(--ink);}
-td.forte{font-weight:700; color:var(--tinta-forte);}
-td.discreto{color:var(--ink-3);}
 tbody tr:nth-child(even){background:var(--zebra);}
-tr.lider{background:var(--realce);}
-.quad{display:inline-block; min-width:1.7em; padding:2px 0; text-align:center;
-  font-family:Consolas,ui-monospace,monospace; font-size:.82rem;
-  border:1px solid var(--linha); color:var(--ink-2);}
-.quad.lider{background:var(--tinta); border-color:var(--tinta); color:var(--sobre-tinta); font-weight:700;}
-
-/* ---------- barras de gols ---------- */
-.barra-td{width:52%; min-width:150px;}
-.barra-linha{display:flex; align-items:center; gap:9px;}
-.barra{height:11px; background:var(--barra); border-radius:0 3px 3px 0; min-width:3px;
-  transition:opacity .15s;}
-.barra-linha:hover .barra{opacity:.78;}
-.barra-valor{font-family:Consolas,ui-monospace,monospace; font-weight:700;
-  color:var(--tinta-forte); font-size:.95rem;}
-
-/* ---------- chips de situacao ---------- */
-.chip{display:inline-flex; align-items:center; gap:6px; font-size:.68rem;
-  text-transform:uppercase; letter-spacing:.09em; font-weight:600;
-  padding:3px 8px; white-space:nowrap;}
-.chip i{width:7px; height:7px; flex:0 0 auto;}
-.chip.atraso{color:var(--vermelho); background:var(--vermelho-bg);}
-.chip.atraso i{background:var(--vermelho-mk);}
-.chip.avencer{color:var(--amarelo); background:var(--amarelo-bg);}
-.chip.avencer i{background:var(--amarelo-mk); border-radius:50%;}
-/* ultimo dia para pagar: nao esta atrasada, mas nao da para deixar passar */
-.chip.hoje{color:var(--vermelho); background:var(--vermelho-bg); font-weight:700;}
-.chip.hoje i{background:var(--vermelho-mk);}
-
-/* ---------- times ---------- */
-.times{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
-  background:var(--linha); border:1px solid var(--linha);}
-.time{background:var(--cartao); padding:11px 13px 13px;}
-.time-cab{display:flex; align-items:center; gap:8px;
-  border-bottom:1px solid var(--linha-2); padding-bottom:7px; margin-bottom:8px;}
-.time-cab b{font-size:.95rem; font-weight:800; text-transform:uppercase;
-  color:var(--tinta-forte); letter-spacing:-.01em;}
-.time-n{display:inline-block; min-width:1.6em; padding:1px 0; text-align:center;
-  background:var(--tinta); color:var(--sobre-tinta); font-weight:700; font-size:.7rem;
-  font-family:Consolas,ui-monospace,monospace;}
-.time ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:5px;}
-.time li{display:grid; grid-template-columns:auto 1fr; align-items:baseline; gap:8px;
-  font-size:.82rem;}
-.vaga{font-family:Consolas,ui-monospace,monospace; font-size:.66rem; color:var(--ink-3);
-  background:var(--barra-fundo); padding:1px 5px; min-width:2.4em; text-align:center;}
-.jogador{color:var(--ink); overflow-wrap:anywhere; line-height:1.2;}
+td.nome,td.motivo,td.pos{text-align:left;}
+td.nome{font-weight:700; color:var(--ink); line-height:1.2;}
+td.nome .sub,td.motivo .sub{display:block; font-size:.68rem; font-weight:500; color:var(--ink-3);
+  text-transform:uppercase; letter-spacing:.07em; margin-top:2px;}
+td.motivo{font-size:.84rem; color:var(--ink-2);}
+td.n{color:var(--ink);}
+td.forte{font-weight:800; color:var(--titulo);}
+td.alerta{color:var(--vermelho);}
+tr.lider{background:var(--ouro-bg) !important;}
+#classificacao td.nome{font-family:Montserrat,system-ui,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.01em;}
+.quad{display:inline-flex; align-items:center; justify-content:center; width:1.9em; height:1.9em; border-radius:50%;
+  font-size:.8rem; font-weight:700; background:var(--cinza-bg); color:var(--ink-2);}
+.quad.ouro{background:var(--ouro); color:#1A1404;}
+td.ultimos{text-align:right;}
+.forma{display:inline-flex; gap:3px;}
+.forma i{font-style:normal; width:20px; height:20px; border-radius:5px; display:inline-flex; align-items:center;
+  justify-content:center; font-size:.62rem; font-weight:800;}
+.f-v{background:var(--verde-bg); color:var(--verde);}
+.f-e{background:var(--cinza-bg); color:var(--ink-2);}
+.f-d{background:var(--vermelho-bg); color:var(--vermelho);}
 
 /* ---------- rodadas ---------- */
-.rodadas{display:grid; grid-template-columns:repeat(auto-fill,minmax(215px,1fr)); gap:1px;
-  background:var(--linha); border:1px solid var(--linha);}
-.rodada{background:var(--cartao); padding:11px 13px 13px;}
-.rodada-cab{display:flex; justify-content:space-between; align-items:baseline;
-  font-size:.63rem; text-transform:uppercase; letter-spacing:.11em; color:var(--ink-3);
-  border-bottom:1px solid var(--linha-2); padding-bottom:6px; margin-bottom:8px;}
-.rodada ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:7px;}
-.rodada li{display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:7px 7px;
-  font-size:.78rem; padding-bottom:6px; border-bottom:1px dotted var(--linha-2);}
+.rodadas{display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px;}
+.rodada{background:var(--cartao); border:1px solid var(--linha); border-radius:14px; padding:12px 14px 14px;}
+.rodada.proxima{border:1.5px solid var(--ouro); background:linear-gradient(180deg,var(--ouro-bg),var(--cartao) 60%);}
+.rodada-cab{display:flex; justify-content:space-between; align-items:center; font-size:.68rem; font-weight:700;
+  text-transform:uppercase; letter-spacing:.11em; color:var(--ink-3);
+  border-bottom:1px solid var(--linha-2); padding-bottom:8px; margin-bottom:9px;}
+.selo-prox{margin-left:7px; padding:2px 7px; border-radius:999px; background:var(--ouro); color:#1A1404;
+  font-weight:800; font-size:.58rem; letter-spacing:.1em;}
+.rodada ul{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.rodada li{display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr); align-items:center; gap:6px 8px;
+  font-size:.8rem; padding-bottom:8px; border-bottom:1px dashed var(--linha-2);}
 .rodada li:last-child{padding-bottom:0; border-bottom:0;}
-/* ---------- mesário ---------- */
-/* linha propria embaixo do jogo, ocupando as tres colunas */
-.mesa{grid-column:1/-1; font-size:.63rem; text-transform:uppercase; letter-spacing:.09em;
-  color:var(--ink-3); text-align:center; margin-top:-2px;}
-.mesa b{color:var(--ink-2); font-weight:700; letter-spacing:.04em;}
-.mesa.vazia{color:var(--amarelo);}
-.jt{color:var(--ink-2); overflow-wrap:anywhere; line-height:1.15;}
+.jt{color:var(--ink-2); overflow-wrap:anywhere; line-height:1.15; font-weight:600;}
 .jt.dir{text-align:right;}
-.jt.forte{color:var(--tinta-forte); font-weight:700;}
-.jp{font-family:Consolas,ui-monospace,monospace; font-size:.85rem; color:var(--ink);
-  background:var(--barra-fundo); padding:1px 7px; white-space:nowrap;}
-.jp i{font-style:normal; color:var(--ink-3); padding:0 1px;}
-.jp.aguardando{color:var(--ink-3); background:transparent; border:1px dashed var(--linha);}
-.rodada li.futuro .jt{color:var(--ink-3);}
+.jt.forte{color:var(--titulo); font-weight:800;}
+.jp{font-weight:800; font-size:.88rem; color:var(--titulo); background:var(--cinza-bg); padding:2px 9px;
+  border-radius:7px; white-space:nowrap;}
+.jp i{font-style:normal; color:var(--ink-3); padding:0 2px;}
+.jp.aguardando{color:var(--ink-3); background:transparent; border:1px dashed var(--linha); font-weight:600;}
+.rodada li.futuro .jt{color:var(--ink-2);}
+.mesa{grid-column:1/-1; font-size:.64rem; text-transform:uppercase; letter-spacing:.09em; color:var(--ink-3); text-align:center;}
+.mesa b{color:var(--ink-2);}
+.mesa.vazia{color:var(--amarelo);}
+.hora{display:inline-block; margin-right:7px; padding:0 6px; border-radius:5px; border:1px solid var(--linha);
+  font-variant-numeric:tabular-nums; color:var(--ink-2); letter-spacing:0;}
 
 /* ---------- uniforme ---------- */
-/* quadradinho colado no nome do time: branco de um lado, azul do outro.
-   E o que o atleta precisa levar na terca. */
-.cam{display:inline-block; width:9px; height:9px; position:relative; top:1px;
-  border:1px solid var(--linha);}
-.cam.br{background:var(--cam-branco); border-color:var(--cam-borda);}
-.cam.az{background:var(--tinta); border-color:var(--tinta);}
-.sumula-cor .cam{top:0;}
-.rodada.proxima{background:var(--realce);}
-.selo-prox{margin-left:7px; padding:1px 5px; background:var(--tinta); color:var(--sobre-tinta);
-  font-weight:800; font-size:.55rem; letter-spacing:.1em; text-transform:uppercase;}
+.cam{display:inline-block; width:10px; height:10px; border-radius:3px; position:relative; top:1px; border:1px solid var(--cam-borda);}
+.cam.br{background:var(--cam-branco);}
+.cam.az{background:var(--cam-azul); border-color:var(--cam-azul);}
+.placar .cam.br{border-color:rgba(255,255,255,.6);}
+.prox .cam{top:0;}
 
-.vazio{color:var(--ink-3); font-size:.85rem; padding:16px 10px; text-align:center;}
-.vazio.ok{color:var(--verde); font-weight:600;}
-td.alerta{color:var(--vermelho);}
-.dias{display:inline-block; font-family:Consolas,ui-monospace,monospace; font-size:.7rem;
-  font-weight:700; text-transform:uppercase; letter-spacing:.04em; white-space:nowrap;
-  color:var(--vermelho); background:var(--vermelho-bg); padding:3px 8px;}
+/* ---------- rankings ---------- */
+.rankings{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; align-items:start;}
+.rank{background:var(--cartao); border:1px solid var(--linha); border-radius:16px; padding:16px; box-shadow:var(--sombra); min-width:0;}
+.rank h3{margin:0; font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:1rem; color:var(--titulo);}
+.rank-dica{margin:3px 0 12px; font-size:.76rem; color:var(--ink-3);}
+.podio{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px;}
+.podio li{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:10px; align-items:center;
+  padding:9px 10px; border-radius:12px; background:var(--zebra); border:1px solid var(--linha-2);}
+.podio li.p1{background:var(--ouro-bg); border-color:var(--ouro);}
+.av{width:38px; height:38px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+  font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:.8rem; color:#fff; background:var(--marinho-forte);}
+.p1 .av{background:var(--ouro); color:#1A1404;}
+.p2 .av{background:#8E9AAE;}
+.p3 .av{background:#B07A4A;}
+.pn{min-width:0; display:flex; flex-direction:column;}
+.pn b{font-weight:700; overflow-wrap:anywhere; line-height:1.2;}
+.pn small{font-size:.66rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-3);}
+.pv{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:1.4rem; color:var(--titulo);
+  text-align:right; line-height:1; font-variant-numeric:tabular-nums;}
+.pv small{display:block; font-size:.58rem; font-weight:700; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-3); margin-top:2px;}
+.completo{margin-top:10px;}
+.completo summary{cursor:pointer; font-size:.8rem; font-weight:700; color:var(--marinho); padding:6px 2px; list-style:none;}
+.completo summary::-webkit-details-marker{display:none;}
+.completo summary::before{content:"+ ";}
+.completo[open] summary::before{content:"− ";}
+.completo table{font-size:.84rem;}
+.completo td,.completo th{padding:7px 6px;}
+
+/* ---------- times ---------- */
+.times{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:12px;}
+.time{background:var(--cartao); border:1px solid var(--linha); border-radius:16px; overflow:hidden;}
+.time-cab{display:flex; align-items:center; gap:10px; padding:12px 14px;
+  background:linear-gradient(135deg,var(--hero-1),var(--hero-2)); color:#fff;}
+.time-cab b{font-family:Montserrat,system-ui,sans-serif; font-weight:800; text-transform:uppercase; letter-spacing:.02em;}
+.time-n{width:26px; height:26px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+  background:var(--ouro); color:#1A1404; font-weight:800; font-size:.78rem;}
+.time ul{list-style:none; margin:0; padding:10px 14px 14px; display:flex; flex-direction:column; gap:6px;}
+.time li{display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:10px; font-size:.88rem;}
+.vaga{font-size:.64rem; font-weight:700; color:var(--ink-2); background:var(--cinza-bg); padding:2px 6px;
+  border-radius:5px; min-width:2.6em; text-align:center;}
+.jogador{color:var(--ink); overflow-wrap:anywhere; line-height:1.2;}
+
+/* ---------- lances (faixa da GS na Area) ---------- */
+.gs-faixa{margin-top:64px; padding:48px 0 52px; color:#fff; position:relative; overflow:hidden;
+  background:
+    linear-gradient(115deg, transparent 0 62%, rgba(166,240,0,.10) 62% 66%, transparent 66% 70%, rgba(166,240,0,.06) 70% 72%, transparent 72%),
+    radial-gradient(600px 300px at 10% 0%, rgba(166,240,0,.12), transparent 60%),
+    var(--gs-preto);}
+.gs-cab{display:grid; grid-template-columns:auto minmax(0,1fr) auto; gap:16px; align-items:center; margin-bottom:22px;}
+.gs-cab img{width:64px; height:64px;}
+.gs-eyebrow{margin:0 0 2px; font-family:Montserrat,system-ui,sans-serif; font-weight:700; font-size:.68rem;
+  text-transform:uppercase; letter-spacing:.18em; color:var(--gs-lima);}
+.gs-cab h2{margin:0; font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-style:italic;
+  text-transform:uppercase; font-size:clamp(1.4rem,3.4vw,2rem); line-height:1.05;}
+.gs-sub{margin:4px 0 0; color:#B9C2B0; font-size:.88rem;}
+.gs-redes{display:flex; gap:8px; flex-wrap:wrap;}
+.btn-gs{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-size:.78rem; text-transform:uppercase;
+  letter-spacing:.06em; color:#0B0D0C; background:var(--gs-lima); text-decoration:none; padding:9px 16px; border-radius:999px;}
+.btn-gs:hover{filter:brightness(1.1);}
+.videos{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-bottom:18px;}
+.reels{display:grid; grid-auto-flow:column; grid-auto-columns:200px; gap:12px; overflow-x:auto;
+  scroll-snap-type:x mandatory; padding-bottom:10px; scrollbar-color:var(--gs-lima) transparent;}
+.lance{display:flex; flex-direction:column; gap:8px; text-decoration:none; color:#fff;
+  scroll-snap-align:start; outline-offset:3px;}
+.lance-img{position:relative; display:block; border-radius:14px; overflow:hidden; background:#1A1D1B;
+  transition:transform .2s ease, box-shadow .2s ease;}
+.lance-img img{width:100%; height:100%; object-fit:cover; transition:transform .35s ease;}
+.lance.reel .lance-img{aspect-ratio:9/16;}
+.lance.video .lance-img{aspect-ratio:16/9;}
+.lance-tit{font-weight:700; font-size:.82rem; line-height:1.3; color:#E4EADB; padding:0 2px;}
+.lance:hover .lance-img{transform:translateY(-3px); box-shadow:0 10px 30px rgba(166,240,0,.18);}
+.lance:hover img{transform:scale(1.04);}
+.lance:hover .lance-tit{color:var(--gs-lima);}
+.play{position:absolute; z-index:1; bottom:10px; right:10px; box-shadow:0 2px 10px rgba(0,0,0,.5); width:32px; height:32px; border-radius:50%;
+  background:var(--gs-lima);}
+.play::before{content:""; position:absolute; left:12px; top:9px; border-left:11px solid #0B0D0C;
+  border-top:7px solid transparent; border-bottom:7px solid transparent;}
+
+/* ---------- multas ---------- */
+.chip{display:inline-flex; align-items:center; gap:6px; font-size:.68rem; text-transform:uppercase;
+  letter-spacing:.08em; font-weight:700; padding:4px 9px; border-radius:999px; white-space:nowrap;}
+.chip i{width:7px; height:7px; border-radius:50%; flex:0 0 auto;}
+.chip.avencer{color:var(--amarelo); background:var(--amarelo-bg);}
+.chip.avencer i{background:var(--amarelo-mk);}
+.chip.hoje{color:var(--vermelho); background:var(--vermelho-bg);}
+.chip.hoje i{background:var(--vermelho-mk);}
+.dias{display:inline-block; font-size:.7rem; font-weight:800; text-transform:uppercase; white-space:nowrap;
+  color:var(--vermelho); background:var(--vermelho-bg); padding:4px 9px; border-radius:999px;}
 #vencidas .rolagem.alerta{border-color:var(--vermelho-mk); border-width:1.5px;}
-footer{margin-top:52px; border-top:1px solid var(--linha); padding-top:16px;
-  font-size:.75rem; color:var(--ink-3);}
-footer p{margin:0 0 6px;}
-footer b{color:var(--ink-2); font-weight:600;}
-a{color:var(--tinta);}
-:focus-visible{outline:2px solid var(--barra); outline-offset:2px;}
-@media (prefers-reduced-motion:reduce){*{transition:none !important;}}
+.dica.recalc{margin:12px 0 0; font-size:.78rem; color:var(--ink-3);}
 
-td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub' */
-/* No celular a tabela nao deve pedir arrasto: some com as colunas secundarias e
-   mostra o vencimento embaixo do nome. O que sobra e o que o jogador precisa. */
-@media (max-width:560px){
-  .wrap{padding:20px 13px 48px;}
-  .tile dd{font-size:1.35rem;}
-  /* com 3 tiles em 2 colunas sobraria um quadrante vazio: o artilheiro ocupa a linha */
-  .tile.artilheiro{grid-column:1/-1;}
+/* ---------- rodape ---------- */
+.rodape{margin-top:64px; background:var(--hero-1); color:var(--sobre-escuro-2); padding:32px 0 36px;}
+.rodape-in{display:flex; gap:24px; align-items:center; justify-content:space-between; flex-wrap:wrap;}
+.rodape-oa{display:flex; gap:14px; align-items:flex-start; max-width:620px;}
+.rodape-oa img{width:56px; height:56px; flex:0 0 auto;}
+.rodape-oa p{margin:0; font-size:.8rem; line-height:1.55;}
+.rodape-oa .rodape-nome{font-family:Cinzel,Georgia,serif; font-weight:800; color:#fff; font-size:1.1rem; margin-bottom:4px;}
+.assinatura{display:inline-flex; align-items:center; gap:10px; text-decoration:none; color:#fff;
+  background:var(--gs-preto); border:1px solid rgba(166,240,0,.4); padding:8px 16px 8px 14px; border-radius:999px;
+  transition:border-color .15s;}
+.assinatura:hover{border-color:var(--gs-lima);}
+.assinatura span{font-size:.7rem; color:#B9C2B0; text-transform:uppercase; letter-spacing:.08em;}
+.assinatura img{width:32px; height:32px;}
+.assinatura b{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-style:italic; text-transform:uppercase; color:var(--gs-lima);}
+
+/* ---------- entrada ao rolar ---------- */
+.anima .revela{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+.anima .revela.visivel{opacity:1; transform:none;}
+@media (prefers-reduced-motion:reduce){*{transition:none !important; scroll-behavior:auto !important;}}
+
+/* ---------- tablet ---------- */
+@media (max-width:900px){
+  .rankings{grid-template-columns:minmax(0,1fr);}
+  .numeros{grid-template-columns:repeat(2,minmax(0,1fr));}
+}
+/* ---------- celular ---------- */
+@media (max-width:600px){
+  .wrap{padding:0 16px;}
+  .topo-in{gap:10px; height:52px;}
+  .marca span{display:none;}
+  .menu a{padding:6px 9px; font-size:.72rem;}
+  .hero-in{grid-template-columns:auto minmax(0,1fr); gap:14px 16px; padding-top:28px; padding-bottom:36px;}
+  .escudo{width:96px; height:96px;}
+  .numeros dd{font-size:1.6rem;}
+  .numeros dd.txt{font-size:1.05rem;}
+  .prox li{grid-template-columns:44px minmax(0,1fr) auto minmax(0,1fr); gap:6px; font-size:.82rem;}
+  section{margin-top:44px;}
+  .campeoes{margin-top:-20px;}
+  .placares{grid-template-columns:minmax(0,1fr);}
+  .placar{padding:14px 14px 16px;}
+  .placar-corpo{gap:8px;}
+  .placar-time b{font-size:.9rem; overflow-wrap:normal; word-break:normal; hyphens:none;}
+  .placar-gols{gap:5px;}
+  .placar-gols span{font-size:1.75rem; padding:5px 6px; min-width:1.3em;}
   table{min-width:0;}
-  td,thead th{padding:8px 6px;}
-  td.nome .sub.so-mobile{display:block;}
-  /* classificacao: fica POS, TIME, PTS, J, SG */
+  td,thead th{padding:9px 6px;}
+  /* classificacao: fica #, TIME, PTS, J, SG */
   #classificacao th:nth-child(5),#classificacao td:nth-child(5),
   #classificacao th:nth-child(6),#classificacao td:nth-child(6),
   #classificacao th:nth-child(7),#classificacao td:nth-child(7),
   #classificacao th:nth-child(8),#classificacao td:nth-child(8),
   #classificacao th:nth-child(9),#classificacao td:nth-child(9),
-  #classificacao th:nth-child(11),#classificacao td:nth-child(11){display:none;}
-  /* artilharia: fica POS, ATLETA, GOLS */
-  #artilharia th:nth-child(4),#artilharia td:nth-child(4),
-  #artilharia th:nth-child(5),#artilharia td:nth-child(5){display:none;}
-  #garcom th:nth-child(4),#garcom td:nth-child(4),
-  #garcom th:nth-child(5),#garcom td:nth-child(5){display:none;}
-  .barra-td{width:auto; min-width:96px;}
-  /* multas: fica ATLETA (com o vencimento embaixo), EM ABERTO, SITUACAO */
-  #multas th:nth-child(2),#multas td:nth-child(2),
-  #multas th:nth-child(4),#multas td:nth-child(4),
-  #vencidas th:nth-child(2),#vencidas td:nth-child(2),
-  #vencidas th:nth-child(4),#vencidas td:nth-child(4){display:none;}
-  .chip{font-size:.62rem; padding:3px 6px; letter-spacing:.06em;}
+  #classificacao th:nth-child(11),#classificacao td:nth-child(11),
+  #classificacao th:nth-child(12),#classificacao td:nth-child(12){display:none;}
+  /* multas: fica ATLETA, VALOR, SITUACAO */
+  #multas th:nth-child(2),#multas td:nth-child(2),#multas th:nth-child(4),#multas td:nth-child(4),
+  #vencidas th:nth-child(2),#vencidas td:nth-child(2),#vencidas th:nth-child(4),#vencidas td:nth-child(4){display:none;}
+  .gs-cab{grid-template-columns:auto minmax(0,1fr);}
+  .gs-redes{grid-column:1/-1;}
+  .gs-cab img{width:52px; height:52px;}
+  .videos{grid-template-columns:minmax(0,1fr);}
+  .reels{grid-auto-columns:62%;}
+  .rodape-in{flex-direction:column; align-items:flex-start;}
 }
-</style>
-<div class="wrap">
-  <header>
-    <p class="eyebrow">Campeonato de futsal &middot; Os Amigos</p>
-    <h1 class="cond">Campeonato - Os Amigos</h1>
-    <p class="sub-h1">Classificação, artilharia e multas em aberto. Atualizado em 09/11/2026.</p>
-  </header>
 
-  <section id="campeoes" class="campeoes">
-    <h2>&#127942; Campeão do último campeonato</h2>
-    <p class="campeoes-de">encerrado em 06/10/2026</p>
+/* =================== camada GS na Area =================== */
+/* fundo da pagina: riscos diagonais em verde-lima nas laterais, como nas artes da GS */
+body{background:
+  linear-gradient(115deg, rgba(166,240,0,.07) 0 2%, transparent 2% 4%, rgba(166,240,0,.05) 4% 5%, transparent 5%) fixed,
+  linear-gradient(295deg, rgba(166,240,0,.07) 0 2%, transparent 2% 4%, rgba(166,240,0,.05) 4% 5%, transparent 5%) fixed,
+  radial-gradient(900px 500px at 50% 0%, rgba(166,240,0,.06), transparent 70%) fixed,
+  var(--fundo);}
+/* faixa "administrado por" acima do menu */
+.gs-barra{background:#000; border-bottom:1px solid rgba(166,240,0,.35); font-size:.74rem; color:#B9C2B0;}
+.gs-barra-in{display:flex; align-items:center; gap:10px; min-height:38px;}
+.gs-barra img{width:26px; height:26px;}
+.gs-barra b{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-style:italic; text-transform:uppercase; color:var(--gs-lima); letter-spacing:.02em;}
+.gs-barra-redes{margin-left:auto; display:flex; gap:6px;}
+.gs-barra-redes a{color:#0B0D0C; background:var(--gs-lima); text-decoration:none; font-weight:800; font-size:.66rem;
+  text-transform:uppercase; letter-spacing:.06em; padding:4px 10px; border-radius:999px;}
+.menu a.ativo{background:var(--gs-lima); color:#0B0D0C;}
+.menu a:hover{background:#1E2420; color:#fff;}
+.sec-cab h2::before{background:var(--gs-lima); transform:skewX(-14deg);}
+/* hero: estadio da GS ao fundo, escurecido no centro onde fica o texto */
+.hero{background:
+    linear-gradient(180deg, rgba(11,13,12,.55), rgba(11,13,12,.35) 40%, rgba(11,13,12,.92) 100%),
+    radial-gradient(ellipse at 50% 45%, rgba(0,0,0,.6), transparent 70%),
+    url("img/estadio-gs.jpg") center 40%/cover no-repeat, #0B0D0C;
+  border-bottom:2px solid var(--gs-lima);}
+.hero::before{display:none;}
+.numeros div{background:rgba(11,13,12,.6); border-color:rgba(166,240,0,.25); backdrop-filter:blur(4px);}
+.numeros dt{color:var(--gs-lima);}
+.prox{background:rgba(11,13,12,.7); border-color:rgba(232,184,90,.55);}
+/* placares e times em grafite com detalhe lima */
+.placar{background:linear-gradient(140deg,#151A16,#1E2620); border:1px solid #2A332C; border-top:3px solid var(--gs-lima);}
+.placar-gols span.venceu{background:var(--gs-lima); color:#0B0D0C;}
+.time-cab{background:linear-gradient(135deg,#151A16,#222B23); border-bottom:2px solid var(--gs-lima);}
+.av{background:#2A332C;}
+.completo summary{color:var(--gs-lima);}
+.campeoes{background:var(--cartao);}
+.rodada.proxima{border-color:var(--gs-lima); background:linear-gradient(180deg,#1C2615,var(--cartao) 60%);}
+.selo-prox{background:var(--gs-lima);}
+.jp{background:#222925;}
+/* rodape: assinatura grande da GS */
+.rodape{background:#000; border-top:2px solid var(--gs-lima);}
+.rodape-gs{display:flex; align-items:center; gap:16px; padding-bottom:22px; margin-bottom:22px; border-bottom:1px solid #1F2421;}
+.rodape-gs img{width:72px; height:72px;}
+.rodape-gs p{margin:0; color:#B9C2B0; font-size:.85rem;}
+.rodape-gs .rg-tit{font-family:Montserrat,system-ui,sans-serif; font-weight:800; font-style:italic; text-transform:uppercase;
+  color:#fff; font-size:1.2rem;}
+.rodape-gs .rg-tit span{color:var(--gs-lima);}
+@media (max-width:600px){
+  .gs-barra-in{font-size:.68rem;}
+  .gs-barra .so-desk{display:none;}
+  .rodape-gs img{width:56px; height:56px;}
+}
+
+/* botoes das redes com icone */
+.btn-gs,.btn-rede{display:inline-flex; align-items:center; gap:7px; --ico-fundo:#A6F000;}
+.btn-gs .ico{width:18px; height:18px;}
+.btn-rede{color:#0B0D0C !important;}
+.btn-rede .ico{width:15px; height:15px;}
+.gs-barra-redes a{padding:4px 11px 4px 8px;}
+.rodape-redes{margin-left:auto;}
+@media (max-width:600px){
+  .btn-rede span{display:none;}
+  .gs-barra-redes a{padding:5px 7px;}
+  .rodape-gs{flex-wrap:wrap;}
+  .rodape-redes{margin-left:0;}
+}
+
+/* ---------- lances girando (a cada 5s, controlado pelo script.js) ----------
+   Videos: 4 grandes em 2x2; o script tira o 1o da fila e manda para o fim, entao a janela de
+   4 vai andando pelos 5+ videos. Sem JS (classe .gira ausente) aparecem todos, nada some. */
+.videos.gira .lance:nth-child(n+5){display:none;}
+.videos{transition:opacity .35s ease;}
+.videos.trocando{opacity:0;}
+/* reels: faixa menor que anda um card por vez */
+.reels{grid-auto-columns:168px; scroll-behavior:smooth;}
+.reels .lance-tit{font-size:.76rem;}
+@media (max-width:600px){ .reels{grid-auto-columns:46%;} }
+</style>
+</head>
+<body>
+<div class="gs-barra">
+  <div class="wrap gs-barra-in">
+    <img src="img/gs-na-area.png" alt="" width="26" height="26">
+    <span><span class="so-desk">Site oficial do campeonato, </span>criado e administrado por <b>GS na Área</b></span>
+    <div class="gs-barra-redes"><a class="btn-rede" href="https://www.instagram.com/gsnaarea/" target="_blank" rel="noopener" aria-label="Instagram da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.4" cy="6.6" r="1.4" fill="currentColor"/></svg><span>Instagram</span></a><a class="btn-rede" href="https://www.youtube.com/@GSnaAreaOficial" target="_blank" rel="noopener" aria-label="YouTube da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="currentColor"/><path d="M10 8.6v6.8l5.8-3.4z" fill="var(--ico-fundo,#A6F000)"/></svg><span>YouTube</span></a></div>
+  </div>
+</div>
+<nav class="topo" aria-label="Seções">
+  <div class="wrap topo-in">
+    <a class="marca" href="#inicio"><img src="img/escudo-os-amigos.png" alt="" width="34" height="34"><span>Os Amigos</span></a>
+    <div class="menu">
+      <a href="#tabela">Tabela</a><a href="#jogos">Jogos</a><a href="#estatisticas">Estatísticas</a>
+      <a href="#times">Times</a><a href="#lances">Lances</a><a href="#multas">Multas</a>
+    </div>
+  </div>
+</nav>
+
+<header id="inicio" class="hero">
+  <div class="wrap hero-in">
+    <img class="escudo" src="img/escudo-os-amigos.png" alt="Escudo Os Amigos, 1980" width="180" height="180">
+    <div class="hero-txt">
+      <p class="eyebrow">Campeonato de futsal · desde 1980</p>
+      <h1>Os Amigos</h1>
+      <p class="edicao">3º campeonato de 2026 · atualizado em 09/11/2026</p>
+    </div>
+    <dl class="numeros">
+      <div><dt>Jogos</dt><dd>8<small>/12</small></dd></div>
+      <div><dt>Gols</dt><dd>79</dd></div>
+      <div><dt>Líder</dt><dd class="txt">BRASIL<small>10 pontos</small></dd></div>
+      <div><dt>Artilheiro</dt><dd class="txt">R. Pardinho<small>11 gols · PORTUGAL</small></dd></div>
+    </dl>
+      <div class="prox">
+        <p class="prox-rot">Próxima rodada · rodada 5 · 10/11/2026</p>
+        <ul><li><span class="ph">20:30</span><span class="pt dir">PORTUGAL <i class="cam br" title="uniforme branco"></i></span><span class="px">x</span><span class="pt"><i class="cam az" title="uniforme azul"></i> ALEMANHA</span></li><li><span class="ph">21:30</span><span class="pt dir">BRASIL <i class="cam br" title="uniforme branco"></i></span><span class="px">x</span><span class="pt"><i class="cam az" title="uniforme azul"></i> FRANÇA</span></li></ul>
+      </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <section id="campeoes" class="campeoes revela">
+    <div class="campeoes-cab">
+      <span class="trofeu" aria-hidden="true">&#127942;</span>
+      <div><h2>Campeão do último campeonato</h2><p class="campeoes-de">encerrado em 06/10/2026</p></div>
+    </div>
     <div class="premios">
-        <div class="premio">
+        <div class="premio principal">
           <p class="premio-rot">CAMPEÃO</p>
           <p class="premio-nome">FRANÇA</p>
           <p class="premio-det">10 pontos</p>
@@ -322,79 +515,190 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
         </div>
     </div>
   </section>
-  <dl class="faixa">
-    <div class="tile"><dt>Jogos realizados</dt><dd>8<small> / 12</small></dd></div>
-    <div class="tile"><dt>Gols no campeonato</dt><dd>79</dd></div>
-    <div class="tile artilheiro"><dt>Artilheiro até agora</dt><dd>R. Pardinho<small>11 gols · PORTUGAL</small></dd></div>
-  </dl>
-
-  <section id="ultimo">
-    <h2>Última rodada</h2>
-    
-      <div class="sumula">
-        <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>FRANÇA</b></div>
-        <div class="sumula-placar"><span class="sumula-gol">4</span><i>x</i><span class="sumula-gol vencedor">8</span></div>
-        <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>PORTUGAL</b></div>
-        <div class="sumula-meta">jogo 7 &middot; rodada 4 &middot; 03/11/2026 &middot; 20:30 &middot; mesa: Deivison</div>
-      </div>
-      <div class="sumula">
-        <div class="sumula-lado"><span class="sumula-cor"><i class="cam br"></i> uniforme branco</span><b>ALEMANHA</b></div>
-        <div class="sumula-placar"><span class="sumula-gol">3</span><i>x</i><span class="sumula-gol">3</span></div>
-        <div class="sumula-lado dir"><span class="sumula-cor">uniforme azul <i class="cam az"></i></span><b>BRASIL</b></div>
-        <div class="sumula-meta">jogo 8 &middot; rodada 4 &middot; 03/11/2026 &middot; 21:30 &middot; mesa: Eduardo</div>
-      </div>
+  <section id="ultimo" class="revela">
+    <div class="sec-cab"><h2>Última rodada</h2><p>Rodada 4</p></div>
+    <div class="placares">
+      <article class="placar">
+        <p class="placar-meta">Jogo 7 · 03/11/2026 · 20:30 · mesa: Deivison</p>
+        <div class="placar-corpo">
+          <div class="placar-time"><span class="uni"><i class="cam br" title="uniforme branco"></i> branco</span><b>FRANÇA</b></div>
+          <div class="placar-gols"><span class="">4</span><i>x</i><span class="venceu">8</span></div>
+          <div class="placar-time dir venceu"><span class="uni">azul <i class="cam az" title="uniforme azul"></i></span><b>PORTUGAL</b></div>
+        </div>
+      </article>
+      <article class="placar">
+        <p class="placar-meta">Jogo 8 · 03/11/2026 · 21:30 · mesa: Eduardo</p>
+        <div class="placar-corpo">
+          <div class="placar-time"><span class="uni"><i class="cam br" title="uniforme branco"></i> branco</span><b>ALEMANHA</b></div>
+          <div class="placar-gols"><span class="">3</span><i>x</i><span class="">3</span></div>
+          <div class="placar-time dir"><span class="uni">azul <i class="cam az" title="uniforme azul"></i></span><b>BRASIL</b></div>
+        </div>
+      </article></div>
   </section>
 
-  <section id="classificacao">
-    <h2>Classificação</h2>
-    <p class="dica">Vitória 3 pontos, empate 1. Desempate: pontos, saldo de gols, gols pró.</p>
-    <div class="rolagem">
-      <table>
+  <section id="tabela" class="revela">
+    <div class="sec-cab"><h2>Classificação</h2><p>Vitória 3 pontos, empate 1. Desempate: pontos, saldo de gols, gols pró.</p></div>
+    <div class="rolagem cartao">
+      <table id="classificacao">
         <thead><tr>
           <th>#</th><th>Time</th><th>Pts</th><th>J</th><th>V</th><th>E</th><th>D</th>
-          <th>GP</th><th>GC</th><th>SG</th><th>Aprov.</th>
+          <th>GP</th><th>GC</th><th>SG</th><th>Aprov.</th><th>Últimos</th>
         </tr></thead>
         <tbody>
         <tr class="lider">
-          <td class="pos"><span class="quad lider">1</span></td>
+          <td class="pos"><span class="quad ouro">1</span></td>
           <td class="nome">BRASIL</td>
           <td class="n forte">10</td>
           <td class="n">4</td><td class="n">3</td><td class="n">1</td>
           <td class="n">0</td><td class="n">23</td><td class="n">14</td>
           <td class="n">+9</td><td class="n discreto">83%</td>
+          <td class="ultimos"><span class="forma"><i class="f-v" title="vitória: 7x2 contra ALEMANHA">V</i><i class="f-v" title="vitória: 5x3 contra FRANÇA">V</i><i class="f-v" title="vitória: 8x6 contra PORTUGAL">V</i><i class="f-e" title="empate: 3x3 contra ALEMANHA">E</i></span></td>
         </tr>
-        <tr class="">
+        <tr>
           <td class="pos"><span class="quad">2</span></td>
           <td class="nome">PORTUGAL</td>
           <td class="n forte">6</td>
           <td class="n">4</td><td class="n">2</td><td class="n">0</td>
           <td class="n">2</td><td class="n">23</td><td class="n">23</td>
           <td class="n">0</td><td class="n discreto">50%</td>
+          <td class="ultimos"><span class="forma"><i class="f-d" title="derrota: 4x7 contra FRANÇA">D</i><i class="f-v" title="vitória: 5x4 contra ALEMANHA">V</i><i class="f-d" title="derrota: 6x8 contra BRASIL">D</i><i class="f-v" title="vitória: 8x4 contra FRANÇA">V</i></span></td>
         </tr>
-        <tr class="">
+        <tr>
           <td class="pos"><span class="quad">3</span></td>
           <td class="nome">FRANÇA</td>
           <td class="n forte">4</td>
           <td class="n">4</td><td class="n">1</td><td class="n">1</td>
           <td class="n">2</td><td class="n">19</td><td class="n">22</td>
           <td class="n">-3</td><td class="n discreto">33%</td>
+          <td class="ultimos"><span class="forma"><i class="f-v" title="vitória: 7x4 contra PORTUGAL">V</i><i class="f-d" title="derrota: 3x5 contra BRASIL">D</i><i class="f-e" title="empate: 5x5 contra ALEMANHA">E</i><i class="f-d" title="derrota: 4x8 contra PORTUGAL">D</i></span></td>
         </tr>
-        <tr class="">
+        <tr>
           <td class="pos"><span class="quad">4</span></td>
           <td class="nome">ALEMANHA</td>
           <td class="n forte">2</td>
           <td class="n">4</td><td class="n">0</td><td class="n">2</td>
           <td class="n">2</td><td class="n">14</td><td class="n">20</td>
           <td class="n">-6</td><td class="n discreto">17%</td>
+          <td class="ultimos"><span class="forma"><i class="f-d" title="derrota: 2x7 contra BRASIL">D</i><i class="f-d" title="derrota: 4x5 contra PORTUGAL">D</i><i class="f-e" title="empate: 5x5 contra FRANÇA">E</i><i class="f-e" title="empate: 3x3 contra BRASIL">E</i></span></td>
         </tr></tbody>
       </table>
     </div>
   </section>
 
-  <section id="times">
-    <h2>Os times</h2>
-    <p class="dica">Sorteio deste campeonato. O número à esquerda é o nível — é a vaga
-      dentro do time, e quem entra no lugar de alguém assume a mesma vaga.</p>
+  <section id="jogos" class="revela">
+    <div class="sec-cab"><h2>Todos os jogos</h2>
+      <p>Duas partidas por terça, todos se enfrentam duas vezes. <b>Uniforme:</b> à esquerda joga de branco <i class="cam br"></i>,
+      à direita de azul <i class="cam az"></i>. Embaixo de cada jogo, o <b>horário</b> e quem fica na <b>mesa</b>.</p></div>
+    <div class="rodadas">
+        <div class="rodada feita">
+          <div class="rodada-cab"><span>Rodada 1</span><time>13/10/2026</time></div>
+          <ul><li><span class="jt dir forte">BRASIL <i class="cam br" title="uniforme branco"></i></span><span class="jp">7<i>-</i>2</span><span class="jt"><i class="cam az" title="uniforme azul"></i> ALEMANHA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Dani</b></span></li><li><span class="jt dir forte">FRANÇA <i class="cam br" title="uniforme branco"></i></span><span class="jp">7<i>-</i>4</span><span class="jt"><i class="cam az" title="uniforme azul"></i> PORTUGAL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Felipe</b></span></li></ul>
+        </div>
+        <div class="rodada feita">
+          <div class="rodada-cab"><span>Rodada 2</span><time>20/10/2026</time></div>
+          <ul><li><span class="jt dir forte">BRASIL <i class="cam br" title="uniforme branco"></i></span><span class="jp">5<i>-</i>3</span><span class="jt"><i class="cam az" title="uniforme azul"></i> FRANÇA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Bel</b></span></li><li><span class="jt dir">ALEMANHA <i class="cam br" title="uniforme branco"></i></span><span class="jp">4<i>-</i>5</span><span class="jt forte"><i class="cam az" title="uniforme azul"></i> PORTUGAL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Diego</b></span></li></ul>
+        </div>
+        <div class="rodada feita">
+          <div class="rodada-cab"><span>Rodada 3</span><time>27/10/2026</time></div>
+          <ul><li><span class="jt dir">PORTUGAL <i class="cam br" title="uniforme branco"></i></span><span class="jp">6<i>-</i>8</span><span class="jt forte"><i class="cam az" title="uniforme azul"></i> BRASIL</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Higor</b></span></li><li><span class="jt dir">FRANÇA <i class="cam br" title="uniforme branco"></i></span><span class="jp">5<i>-</i>5</span><span class="jt"><i class="cam az" title="uniforme azul"></i> ALEMANHA</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Ronaldo</b></span></li></ul>
+        </div>
+        <div class="rodada feita">
+          <div class="rodada-cab"><span>Rodada 4</span><time>03/11/2026</time></div>
+          <ul><li><span class="jt dir">FRANÇA <i class="cam br" title="uniforme branco"></i></span><span class="jp">4<i>-</i>8</span><span class="jt forte"><i class="cam az" title="uniforme azul"></i> PORTUGAL</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Deivison</b></span></li><li><span class="jt dir">ALEMANHA <i class="cam br" title="uniforme branco"></i></span><span class="jp">3<i>-</i>3</span><span class="jt"><i class="cam az" title="uniforme azul"></i> BRASIL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Eduardo</b></span></li></ul>
+        </div>
+        <div class="rodada proxima">
+          <div class="rodada-cab"><span>Rodada 5<b class="selo-prox">próxima</b></span><time>10/11/2026</time></div>
+          <ul><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br" title="uniforme branco"></i></span><span class="jp aguardando">x</span><span class="jt"><i class="cam az" title="uniforme azul"></i> ALEMANHA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Junior</b></span></li><li class="futuro"><span class="jt dir">BRASIL <i class="cam br" title="uniforme branco"></i></span><span class="jp aguardando">x</span><span class="jt"><i class="cam az" title="uniforme azul"></i> FRANÇA</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Alan</b></span></li></ul>
+        </div>
+        <div class="rodada">
+          <div class="rodada-cab"><span>Rodada 6</span><time>17/11/2026</time></div>
+          <ul><li class="futuro"><span class="jt dir">ALEMANHA <i class="cam br" title="uniforme branco"></i></span><span class="jp aguardando">x</span><span class="jt"><i class="cam az" title="uniforme azul"></i> FRANÇA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Douglas</b></span></li><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br" title="uniforme branco"></i></span><span class="jp aguardando">x</span><span class="jt"><i class="cam az" title="uniforme azul"></i> BRASIL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>João</b></span></li></ul>
+        </div></div>
+  </section>
+
+  <section id="estatisticas" class="revela">
+    <div class="sec-cab"><h2>Estatísticas</h2><p>Deste campeonato.</p></div>
+    <div class="rankings">
+      <div class="rank" id="artilharia"><h3><span aria-hidden="true">&#9917;</span> Artilharia</h3><p class="rank-dica">Desempate: menos jogos disputados. Outros 10 atletas ainda não marcaram.</p>
+        <ol class="podio">
+          <li class="p1">
+            <span class="av">RP</span>
+            <span class="pn"><b>R. Pardinho</b><small>PORTUGAL</small></span>
+            <span class="pv">11<small>gols</small></span>
+          </li>
+          <li class="p2">
+            <span class="av">Y</span>
+            <span class="pn"><b>Yvison</b><small>BRASIL</small></span>
+            <span class="pv">7<small>gols</small></span>
+          </li>
+          <li class="p3">
+            <span class="av">RF</span>
+            <span class="pn"><b>R. Faria</b><small>ALEMANHA</small></span>
+            <span class="pv">6<small>gols</small></span>
+          </li>
+        </ol>
+        <details class="completo">
+          <summary>Ver ranking completo (23)</summary>
+          <div class="rolagem"><table class="curta">
+            <thead><tr><th>#</th><th>Atleta</th><th>Gols</th><th>Jogos</th><th>Média</th></tr></thead>
+            <tbody><tr><td class="pos"><span class="quad">1</span></td><td class="nome">R. Pardinho<span class="sub">PORTUGAL</span></td><td class="n forte">11</td><td class="n discreto">4</td><td class="n discreto">2,75</td></tr><tr><td class="pos"><span class="quad">2</span></td><td class="nome">Yvison<span class="sub">BRASIL</span></td><td class="n forte">7</td><td class="n discreto">4</td><td class="n discreto">1,75</td></tr><tr><td class="pos"><span class="quad">3</span></td><td class="nome">R. Faria<span class="sub">ALEMANHA</span></td><td class="n forte">6</td><td class="n discreto">3</td><td class="n discreto">2,00</td></tr><tr><td class="pos"><span class="quad">4</span></td><td class="nome">Dani<span class="sub">PORTUGAL</span></td><td class="n forte">6</td><td class="n discreto">4</td><td class="n discreto">1,50</td></tr><tr><td class="pos"><span class="quad">5</span></td><td class="nome">Bel<span class="sub">ALEMANHA</span></td><td class="n forte">5</td><td class="n discreto">4</td><td class="n discreto">1,25</td></tr><tr><td class="pos"><span class="quad">6</span></td><td class="nome">Higor<span class="sub">FRANÇA</span></td><td class="n forte">5</td><td class="n discreto">4</td><td class="n discreto">1,25</td></tr><tr><td class="pos"><span class="quad">7</span></td><td class="nome">Thiaguinho<span class="sub">FRANÇA</span></td><td class="n forte">5</td><td class="n discreto">4</td><td class="n discreto">1,25</td></tr><tr><td class="pos"><span class="quad">8</span></td><td class="nome">Ronaldo<span class="sub">BRASIL</span></td><td class="n forte">4</td><td class="n discreto">4</td><td class="n discreto">1,00</td></tr><tr><td class="pos"><span class="quad">9</span></td><td class="nome">Diego<span class="sub">FRANÇA</span></td><td class="n forte">4</td><td class="n discreto">4</td><td class="n discreto">1,00</td></tr><tr><td class="pos"><span class="quad">10</span></td><td class="nome">Vitinho<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">11</span></td><td class="nome">Leonardo<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">12</span></td><td class="nome">Douglas<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">13</span></td><td class="nome">Eduardo<span class="sub">PORTUGAL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">14</span></td><td class="nome">R. Bezerra<span class="sub">PORTUGAL</span></td><td class="n forte">2</td><td class="n discreto">1</td><td class="n discreto">2,00</td></tr><tr><td class="pos"><span class="quad">15</span></td><td class="nome">Felipe<span class="sub">BRASIL</span></td><td class="n forte">2</td><td class="n discreto">2</td><td class="n discreto">1,00</td></tr><tr><td class="pos"><span class="quad">16</span></td><td class="nome">João<span class="sub">FRANÇA</span></td><td class="n forte">2</td><td class="n discreto">4</td><td class="n discreto">0,50</td></tr><tr><td class="pos"><span class="quad">17</span></td><td class="nome">Leo S<span class="sub">FRANÇA</span></td><td class="n forte">1</td><td class="n discreto">3</td><td class="n discreto">0,33</td></tr><tr><td class="pos"><span class="quad">18</span></td><td class="nome">Naldo<span class="sub">FRANÇA</span></td><td class="n forte">1</td><td class="n discreto">3</td><td class="n discreto">0,33</td></tr><tr><td class="pos"><span class="quad">19</span></td><td class="nome">Junior<span class="sub">BRASIL</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">20</span></td><td class="nome">Victor O.<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">21</span></td><td class="nome">Sonata<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">22</span></td><td class="nome">Deivison<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">23</span></td><td class="nome">R. Palmieri<span class="sub">PORTUGAL</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr></tbody>
+          </table></div>
+        </details></div>
+      <div class="rank" id="garcom"><h3><span aria-hidden="true">&#127919;</span> Troféu do Garçom</h3><p class="rank-dica">Quem deu o passe do gol. Desempate: menos jogos.</p>
+        <ol class="podio">
+          <li class="p1">
+            <span class="av">E</span>
+            <span class="pn"><b>Eduardo</b><small>PORTUGAL</small></span>
+            <span class="pv">7<small>assist.</small></span>
+          </li>
+          <li class="p2">
+            <span class="av">V</span>
+            <span class="pn"><b>Vitinho</b><small>BRASIL</small></span>
+            <span class="pv">6<small>assist.</small></span>
+          </li>
+          <li class="p3">
+            <span class="av">T</span>
+            <span class="pn"><b>Thiaguinho</b><small>FRANÇA</small></span>
+            <span class="pv">5<small>assist.</small></span>
+          </li>
+        </ol>
+        <details class="completo">
+          <summary>Ver ranking completo (21)</summary>
+          <div class="rolagem"><table class="curta">
+            <thead><tr><th>#</th><th>Atleta</th><th>Assist.</th><th>Jogos</th><th>Média</th></tr></thead>
+            <tbody><tr><td class="pos"><span class="quad">1</span></td><td class="nome">Eduardo<span class="sub">PORTUGAL</span></td><td class="n forte">7</td><td class="n discreto">4</td><td class="n discreto">1,75</td></tr><tr><td class="pos"><span class="quad">2</span></td><td class="nome">Vitinho<span class="sub">BRASIL</span></td><td class="n forte">6</td><td class="n discreto">4</td><td class="n discreto">1,50</td></tr><tr><td class="pos"><span class="quad">3</span></td><td class="nome">Thiaguinho<span class="sub">FRANÇA</span></td><td class="n forte">5</td><td class="n discreto">4</td><td class="n discreto">1,25</td></tr><tr><td class="pos"><span class="quad">4</span></td><td class="nome">R. Faria<span class="sub">ALEMANHA</span></td><td class="n forte">3</td><td class="n discreto">3</td><td class="n discreto">1,00</td></tr><tr><td class="pos"><span class="quad">5</span></td><td class="nome">Yvison<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">6</span></td><td class="nome">Leonardo<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">7</span></td><td class="nome">Ronaldo<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">8</span></td><td class="nome">Victor O.<span class="sub">ALEMANHA</span></td><td class="n forte">3</td><td class="n discreto">4</td><td class="n discreto">0,75</td></tr><tr><td class="pos"><span class="quad">9</span></td><td class="nome">Naldo<span class="sub">FRANÇA</span></td><td class="n forte">2</td><td class="n discreto">3</td><td class="n discreto">0,67</td></tr><tr><td class="pos"><span class="quad">10</span></td><td class="nome">R. Pardinho<span class="sub">PORTUGAL</span></td><td class="n forte">2</td><td class="n discreto">4</td><td class="n discreto">0,50</td></tr><tr><td class="pos"><span class="quad">11</span></td><td class="nome">R. Palmieri<span class="sub">PORTUGAL</span></td><td class="n forte">2</td><td class="n discreto">4</td><td class="n discreto">0,50</td></tr><tr><td class="pos"><span class="quad">12</span></td><td class="nome">Dani<span class="sub">PORTUGAL</span></td><td class="n forte">2</td><td class="n discreto">4</td><td class="n discreto">0,50</td></tr><tr><td class="pos"><span class="quad">13</span></td><td class="nome">R. Hortega<span class="sub">PORTUGAL</span></td><td class="n forte">1</td><td class="n discreto">2</td><td class="n discreto">0,50</td></tr><tr><td class="pos"><span class="quad">14</span></td><td class="nome">Leo S<span class="sub">FRANÇA</span></td><td class="n forte">1</td><td class="n discreto">3</td><td class="n discreto">0,33</td></tr><tr><td class="pos"><span class="quad">15</span></td><td class="nome">Douglas<span class="sub">BRASIL</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">16</span></td><td class="nome">Alan<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">17</span></td><td class="nome">Sonata<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">18</span></td><td class="nome">Deivison<span class="sub">ALEMANHA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">19</span></td><td class="nome">Higor<span class="sub">FRANÇA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">20</span></td><td class="nome">Diego<span class="sub">FRANÇA</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr><tr><td class="pos"><span class="quad">21</span></td><td class="nome">F. Pardinho<span class="sub">PORTUGAL</span></td><td class="n forte">1</td><td class="n discreto">4</td><td class="n discreto">0,25</td></tr></tbody>
+          </table></div>
+        </details></div>
+      <div class="rank" id="goleiros"><h3><span aria-hidden="true">&#129508;</span> Goleiros menos vazados</h3><p class="rank-dica">Menos gols tomados. Empate: quem pegou mais jogos.</p>
+        <ol class="podio">
+          <li class="p1">
+            <span class="av">S</span>
+            <span class="pn"><b>Soares</b><small>BRASIL</small></span>
+            <span class="pv">3<small>sofridos</small></span>
+          </li>
+          <li class="p2">
+            <span class="av">F</span>
+            <span class="pn"><b>Fernando</b><small>FRANÇA</small></span>
+            <span class="pv">8<small>sofridos</small></span>
+          </li>
+          <li class="p3">
+            <span class="av">F</span>
+            <span class="pn"><b>Felipe</b><small>BRASIL</small></span>
+            <span class="pv">11<small>sofridos</small></span>
+          </li>
+        </ol>
+        <details class="completo">
+          <summary>Ver ranking completo (6)</summary>
+          <div class="rolagem"><table class="curta">
+            <thead><tr><th>#</th><th>Atleta</th><th>Sofridos</th><th>Jogos</th></tr></thead>
+            <tbody><tr><td class="pos"><span class="quad">1</span></td><td class="nome">Soares<span class="sub">BRASIL</span></td><td class="n forte">3</td><td class="n discreto">1</td></tr><tr><td class="pos"><span class="quad">2</span></td><td class="nome">Fernando<span class="sub">FRANÇA</span></td><td class="n forte">8</td><td class="n discreto">1</td></tr><tr><td class="pos"><span class="quad">3</span></td><td class="nome">Felipe<span class="sub">BRASIL</span></td><td class="n forte">11</td><td class="n discreto">3</td></tr><tr><td class="pos"><span class="quad">4</span></td><td class="nome">Robson<span class="sub">FRANÇA</span></td><td class="n forte">14</td><td class="n discreto">3</td></tr><tr><td class="pos"><span class="quad">5</span></td><td class="nome">Alan<span class="sub">ALEMANHA</span></td><td class="n forte">20</td><td class="n discreto">4</td></tr><tr><td class="pos"><span class="quad">6</span></td><td class="nome">R. Hortega<span class="sub">PORTUGAL</span></td><td class="n forte">23</td><td class="n discreto">4</td></tr></tbody>
+          </table></div>
+        </details></div>
+    </div>
+  </section>
+
+  <section id="times" class="revela">
+    <div class="sec-cab"><h2>Os times</h2><p>Sorteio deste campeonato. O número é o nível, a vaga dentro do time: quem entra no lugar de alguém assume a mesma vaga.</p></div>
     <div class="times">
         <div class="time">
           <div class="time-cab"><span class="time-n">1</span><b>BRASIL</b></div>
@@ -413,654 +717,30 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <ul><li><span class="vaga">GOL</span><span class="jogador">R. Hortega</span></li><li><span class="vaga">1</span><span class="jogador">R. Pardinho</span></li><li><span class="vaga">2</span><span class="jogador">Eduardo</span></li><li><span class="vaga">3</span><span class="jogador">R. Palmieri</span></li><li><span class="vaga">4</span><span class="jogador">F. Pardinho</span></li><li><span class="vaga">5</span><span class="jogador">Dani</span></li><li><span class="vaga">6</span><span class="jogador">R. Bezerra</span></li></ul>
         </div></div>
   </section>
+</main>
 
-  <section id="rodadas">
-    <h2>Todos os jogos</h2>
-    <p class="dica">Duas partidas por terça. Todos se enfrentam duas vezes.
-      <b>Uniforme:</b> quem está à esquerda joga de branco <i class="cam br"></i>,
-      quem está à direita joga de azul <i class="cam az"></i>.
-      Embaixo de cada jogo, o <b>horário</b> e quem fica na <b>mesa</b>.
-      Cada time joga 3 vezes em cada horário e 3 com cada uniforme.</p>
-    <div class="rodadas">
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 1</span><time>13/10/2026</time></div>
-          <ul><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">7<i>&ndash;</i>2</span><span class="jt "><i class="cam az"></i> ALEMANHA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Dani</b></span></li><li><span class="jt dir forte">FRANÇA <i class="cam br"></i></span><span class="jp">7<i>&ndash;</i>4</span><span class="jt "><i class="cam az"></i> PORTUGAL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Felipe</b></span></li></ul>
+  <section id="lances" class="gs-faixa">
+    <div class="wrap">
+      <div class="gs-cab revela">
+        <img src="img/gs-na-area.png" alt="GS na Área" width="64" height="64">
+        <div>
+          <p class="gs-eyebrow">Futebol · Melhores momentos · Resenha</p>
+          <h2>Lances do campeonato</h2>
+          <p class="gs-sub">Gravados e editados pela GS na Área, toda terça na quadra.</p>
         </div>
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 2</span><time>20/10/2026</time></div>
-          <ul><li><span class="jt dir forte">BRASIL <i class="cam br"></i></span><span class="jp">5<i>&ndash;</i>3</span><span class="jt "><i class="cam az"></i> FRANÇA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Bel</b></span></li><li><span class="jt dir ">ALEMANHA <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>5</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Diego</b></span></li></ul>
-        </div>
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 3</span><time>27/10/2026</time></div>
-          <ul><li><span class="jt dir ">PORTUGAL <i class="cam br"></i></span><span class="jp">6<i>&ndash;</i>8</span><span class="jt forte"><i class="cam az"></i> BRASIL</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Higor</b></span></li><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">5<i>&ndash;</i>5</span><span class="jt "><i class="cam az"></i> ALEMANHA</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Ronaldo</b></span></li></ul>
-        </div>
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 4</span><time>03/11/2026</time></div>
-          <ul><li><span class="jt dir ">FRANÇA <i class="cam br"></i></span><span class="jp">4<i>&ndash;</i>8</span><span class="jt forte"><i class="cam az"></i> PORTUGAL</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Deivison</b></span></li><li><span class="jt dir ">ALEMANHA <i class="cam br"></i></span><span class="jp">3<i>&ndash;</i>3</span><span class="jt "><i class="cam az"></i> BRASIL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Eduardo</b></span></li></ul>
-        </div>
-        <div class="rodada proxima">
-          <div class="rodada-cab"><span>rodada 5<b class="selo-prox">próxima</b></span><time>10/11/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> ALEMANHA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Junior</b></span></li><li class="futuro"><span class="jt dir">BRASIL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> FRANÇA</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>Alan</b></span></li></ul>
-        </div>
-        <div class="rodada">
-          <div class="rodada-cab"><span>rodada 6</span><time>17/11/2026</time></div>
-          <ul><li class="futuro"><span class="jt dir">ALEMANHA <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> FRANÇA</span><span class="mesa"><span class="hora">20:30</span>mesa: <b>Douglas</b></span></li><li class="futuro"><span class="jt dir">PORTUGAL <i class="cam br"></i></span><span class="jp aguardando">&middot;</span><span class="jt"><i class="cam az"></i> BRASIL</span><span class="mesa"><span class="hora">21:30</span>mesa: <b>João</b></span></li></ul>
-        </div></div>
-  </section>
-
-  <section id="artilharia">
-    <h2>Artilharia</h2>
-    <p class="dica">Ordenada por gols. Desempate: menos jogos disputados. Outros 10 atletas ainda não marcaram.</p>
-    <div class="rolagem">
-      <table>
-        <thead><tr>
-          <th>#</th><th>Atleta</th><th style="text-align:left">Gols</th><th>Jogos</th><th>Média</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-          <td class="pos"><span class="quad">1</span></td>
-          <td class="nome">R. Pardinho<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Pardinho: 11 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:100.0%"></div>
-              <span class="barra-valor">11</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">2,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">2</span></td>
-          <td class="nome">Yvison<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Yvison: 7 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:63.6%"></div>
-              <span class="barra-valor">7</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">3</span></td>
-          <td class="nome">R. Faria<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Faria: 6 gol(s) em 3 jogo(s)">
-              <div class="barra" style="width:54.5%"></div>
-              <span class="barra-valor">6</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">2,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">4</span></td>
-          <td class="nome">Dani<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Dani: 6 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:54.5%"></div>
-              <span class="barra-valor">6</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">5</span></td>
-          <td class="nome">Bel<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Bel: 5 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:45.5%"></div>
-              <span class="barra-valor">5</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">6</span></td>
-          <td class="nome">Higor<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Higor: 5 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:45.5%"></div>
-              <span class="barra-valor">5</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">7</span></td>
-          <td class="nome">Thiaguinho<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Thiaguinho: 5 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:45.5%"></div>
-              <span class="barra-valor">5</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">8</span></td>
-          <td class="nome">Ronaldo<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Ronaldo: 4 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:36.4%"></div>
-              <span class="barra-valor">4</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">9</span></td>
-          <td class="nome">Diego<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Diego: 4 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:36.4%"></div>
-              <span class="barra-valor">4</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">10</span></td>
-          <td class="nome">Vitinho<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Vitinho: 3 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:27.3%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">11</span></td>
-          <td class="nome">Leonardo<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Leonardo: 3 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:27.3%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">12</span></td>
-          <td class="nome">Douglas<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Douglas: 3 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:27.3%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">13</span></td>
-          <td class="nome">Eduardo<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Eduardo: 3 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:27.3%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">14</span></td>
-          <td class="nome">R. Bezerra<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Bezerra: 2 gol(s) em 1 jogo(s)">
-              <div class="barra" style="width:18.2%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">1</td>
-          <td class="n discreto">2,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">15</span></td>
-          <td class="nome">Felipe<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Felipe: 2 gol(s) em 2 jogo(s)">
-              <div class="barra" style="width:18.2%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">2</td>
-          <td class="n discreto">1,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">16</span></td>
-          <td class="nome">João<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="João: 2 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:18.2%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">17</span></td>
-          <td class="nome">Leo S<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Leo S: 1 gol(s) em 3 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">0,33</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">18</span></td>
-          <td class="nome">Naldo<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Naldo: 1 gol(s) em 3 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">0,33</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">19</span></td>
-          <td class="nome">Junior<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Junior: 1 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">20</span></td>
-          <td class="nome">Victor O.<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Victor O.: 1 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">21</span></td>
-          <td class="nome">Sonata<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Sonata: 1 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">22</span></td>
-          <td class="nome">Deivison<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Deivison: 1 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">23</span></td>
-          <td class="nome">R. Palmieri<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Palmieri: 1 gol(s) em 4 jogo(s)">
-              <div class="barra" style="width:9.1%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr></tbody>
-      </table>
+        <div class="gs-redes"><a class="btn-gs" href="https://www.instagram.com/gsnaarea/" target="_blank" rel="noopener" aria-label="Instagram da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.4" cy="6.6" r="1.4" fill="currentColor"/></svg><span>Instagram</span></a><a class="btn-gs" href="https://www.youtube.com/@GSnaAreaOficial" target="_blank" rel="noopener" aria-label="YouTube da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="currentColor"/><path d="M10 8.6v6.8l5.8-3.4z" fill="var(--ico-fundo,#A6F000)"/></svg><span>YouTube</span></a></div>
+      </div>
+      <div class="videos revela"><a class="lance video" href="https://www.youtube.com/watch?v=OKPF3V1iE-8" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/os-amigos-melhores-momentos.jpg" alt="Os Amigos: melhores momentos" loading="lazy" width="960" height="540"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Os Amigos: melhores momentos</span></a><a class="lance video" href="https://www.youtube.com/watch?v=9X9FEMm6I2I" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/dani-celebra-em-grande-estilo.jpg" alt="Dani celebra em grande estilo" loading="lazy" width="960" height="540"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Dani celebra em grande estilo</span></a><a class="lance video" href="https://www.youtube.com/watch?v=dx4R4gkEZKk" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/felipe-brilha-no-brasil-x-franca.jpg" alt="Felipe brilha no Brasil x França" loading="lazy" width="960" height="540"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Felipe brilha no Brasil x França</span></a><a class="lance video" href="https://www.youtube.com/watch?v=0wMmCog_5ZI" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/golaco-do-joao-no-futsal.jpg" alt="Golaço do João no futsal" loading="lazy" width="960" height="540"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Golaço do João no futsal</span></a><a class="lance video" href="https://www.youtube.com/watch?v=3l7TZwO-K3s" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/felipe-defendeu-tudo-e-fez-golaco-1.jpg" alt="Felipe defendeu tudo e fez golaço" loading="lazy" width="960" height="540"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Felipe defendeu tudo e fez golaço</span></a></div>
+      <div class="reels" tabindex="0" aria-label="Reels do campeonato"><a class="lance reel" href="https://www.youtube.com/shorts/D6puPbaP2Mo" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/que-chapeu-higor.jpg" alt="Que chapéu, Higor!" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Que chapéu, Higor!</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=Umb7rV_R9Mw" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/que-pintura-no-voleio.jpg" alt="Que pintura no voleio" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Que pintura no voleio</span></a><a class="lance reel" href="https://www.youtube.com/shorts/jof08KbpOyE" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/que-chapeu-lance-aereo-no-futebol.jpg" alt="Que chapéu! Lance aéreo no futebol" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Que chapéu! Lance aéreo no futebol</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=AiR64t4eHzc" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/golaco-chute-contra-goleiro-amarelo.jpg" alt="Golaço, chute contra goleiro amarelo" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Golaço, chute contra goleiro amarelo</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=IugM1XnVEms" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/felipe-celebra-na-area-brasil-x-franca.jpg" alt="Felipe celebra na área, Brasil x França" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Felipe celebra na área, Brasil x França</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=oXc8iG4th9o" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/duelo-de-futsal-em-destaque.jpg" alt="Duelo de futsal em destaque" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Duelo de futsal em destaque</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=9yuKRbyg9ww" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/felipe-em-destaque-no-futsal-2.jpg" alt="Felipe em destaque no futsal" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Felipe em destaque no futsal</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=40Fi43gFLlQ" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/olha-o-claudinho-que-lance.jpg" alt="Olha o Claudinho, que lance!" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Olha o Claudinho, que lance!</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=WeFpxEDf4CE" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/gol-de-cobertura-no-futsal.jpg" alt="Gol de cobertura no futsal" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Gol de cobertura no futsal</span></a><a class="lance reel" href="https://www.youtube.com/shorts/a6TA1busUB8" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/higor-da-chapeu-no-futsal.jpg" alt="Higor dá chapéu no futsal" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Higor dá chapéu no futsal</span></a><a class="lance reel" href="https://www.youtube.com/watch?v=wNaR_zv0nXE" target="_blank" rel="noopener"><span class="lance-img"><img src="img/lances/pardinho-marca-dois-gols-no-futsal.jpg" alt="Pardinho marca dois gols no futsal" loading="lazy" width="540" height="960"><span class="play" aria-hidden="true"></span></span><span class="lance-tit">Pardinho marca dois gols no futsal</span></a></div>
     </div>
   </section>
-
-  <section id="garcom">
-    <h2>Troféu do Garçom</h2>
-    <p class="dica">Quem deu o passe do gol neste campeonato. Desempate: 1) assistências
-      2) menos jogos disputados.</p>
-    <div class="rolagem">
+<div class="wrap">
+  <section id="multas" class="revela">
+    <div class="sec-cab"><h2>Multas em aberto</h2>
+    <p>Cada linha é uma multa, com o vencimento dela. Quem pagou sai da lista. Ausência R$ 20 · amarelo R$ 15 · amarelo + vermelho no mesmo jogo R$ 45 · vermelho direto R$ 30. O prazo é de <b>14 dias</b> a contar do jogo: como se joga nas terças, vence no dia do 2º jogo seguinte, não o próximo, o outro. Multa de rodada anterior à última precisa estar quitada até a última rodada, é o que libera para jogar. A multa tirada na própria última rodada usa os 14 dias normais. Multa de campeonato encerrado continua na lista até ser paga, com o nome do campeonato embaixo do atleta.</p></div>
+    <div class="rolagem cartao">
       <table>
-        <thead><tr>
-          <th>#</th><th>Atleta</th><th style="text-align:left">Assistências</th><th>Jogos</th><th>Média</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-          <td class="pos"><span class="quad">1</span></td>
-          <td class="nome">Eduardo<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Eduardo: 7 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:100.0%"></div>
-              <span class="barra-valor">7</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">2</span></td>
-          <td class="nome">Vitinho<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Vitinho: 6 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:85.7%"></div>
-              <span class="barra-valor">6</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">3</span></td>
-          <td class="nome">Thiaguinho<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Thiaguinho: 5 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:71.4%"></div>
-              <span class="barra-valor">5</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">1,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">4</span></td>
-          <td class="nome">R. Faria<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Faria: 3 assistência(s) em 3 jogo(s)">
-              <div class="barra" style="width:42.9%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">1,00</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">5</span></td>
-          <td class="nome">Yvison<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Yvison: 3 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:42.9%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">6</span></td>
-          <td class="nome">Leonardo<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Leonardo: 3 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:42.9%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">7</span></td>
-          <td class="nome">Ronaldo<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Ronaldo: 3 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:42.9%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">8</span></td>
-          <td class="nome">Victor O.<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Victor O.: 3 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:42.9%"></div>
-              <span class="barra-valor">3</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,75</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">9</span></td>
-          <td class="nome">Naldo<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Naldo: 2 assistência(s) em 3 jogo(s)">
-              <div class="barra" style="width:28.6%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">0,67</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">10</span></td>
-          <td class="nome">R. Pardinho<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Pardinho: 2 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:28.6%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">11</span></td>
-          <td class="nome">R. Palmieri<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Palmieri: 2 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:28.6%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">12</span></td>
-          <td class="nome">Dani<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Dani: 2 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:28.6%"></div>
-              <span class="barra-valor">2</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">13</span></td>
-          <td class="nome">R. Hortega<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="R. Hortega: 1 assistência(s) em 2 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">2</td>
-          <td class="n discreto">0,50</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">14</span></td>
-          <td class="nome">Leo S<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Leo S: 1 assistência(s) em 3 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">3</td>
-          <td class="n discreto">0,33</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">15</span></td>
-          <td class="nome">Douglas<span class="sub">BRASIL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Douglas: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">16</span></td>
-          <td class="nome">Alan<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Alan: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">17</span></td>
-          <td class="nome">Sonata<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Sonata: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">18</span></td>
-          <td class="nome">Deivison<span class="sub">ALEMANHA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Deivison: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">19</span></td>
-          <td class="nome">Higor<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Higor: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">20</span></td>
-          <td class="nome">Diego<span class="sub">FRANÇA</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="Diego: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">21</span></td>
-          <td class="nome">F. Pardinho<span class="sub">PORTUGAL</span></td>
-          <td class="barra-td">
-            <div class="barra-linha" title="F. Pardinho: 1 assistência(s) em 4 jogo(s)">
-              <div class="barra" style="width:14.3%"></div>
-              <span class="barra-valor">1</span>
-            </div>
-          </td>
-          <td class="n discreto">4</td>
-          <td class="n discreto">0,25</td>
-        </tr></tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="goleiros">
-    <h2>Goleiros menos vazados</h2>
-    <p class="dica">Deste campeonato, pelo total de gols tomados. Empate: quem pegou mais
-      jogos fica na frente.</p>
-    <div class="rolagem">
-      <table class="curta">
-        <thead><tr>
-          <th>#</th><th>Goleiro</th><th>Gols sofridos</th><th>Jogos</th>
-        </tr></thead>
-        <tbody>
-        <tr>
-          <td class="pos"><span class="quad">1</span></td>
-          <td class="nome">Soares<span class="sub">BRASIL</span></td>
-          <td class="n forte">3</td>
-          <td class="n discreto">1</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">2</span></td>
-          <td class="nome">Fernando<span class="sub">FRANÇA</span></td>
-          <td class="n forte">8</td>
-          <td class="n discreto">1</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">3</span></td>
-          <td class="nome">Felipe<span class="sub">BRASIL</span></td>
-          <td class="n forte">11</td>
-          <td class="n discreto">3</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">4</span></td>
-          <td class="nome">Robson<span class="sub">FRANÇA</span></td>
-          <td class="n forte">14</td>
-          <td class="n discreto">3</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">5</span></td>
-          <td class="nome">Alan<span class="sub">ALEMANHA</span></td>
-          <td class="n forte">20</td>
-          <td class="n discreto">4</td>
-        </tr>
-        <tr>
-          <td class="pos"><span class="quad">6</span></td>
-          <td class="nome">R. Hortega<span class="sub">PORTUGAL</span></td>
-          <td class="n forte">23</td>
-          <td class="n discreto">4</td>
-        </tr></tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="multas">
-    <h2>Multas em aberto</h2>
-    <p class="dica">Cada linha é uma multa, com o vencimento dela. Quem pagou sai da lista. Ausência R$ 20 &middot; amarelo R$ 15 &middot; amarelo + vermelho no mesmo jogo R$ 45 &middot; vermelho direto R$ 30. O prazo é de <b>14 dias</b> a contar do jogo: como se joga nas terças, vence no dia do 2º jogo seguinte — não o próximo, o outro. Multa de rodada anterior à última precisa estar quitada até a última rodada — é o que libera para jogar. A multa tirada na própria última rodada usa os 14 dias normais. Multa de campeonato encerrado continua na lista até ser paga, com o nome do campeonato embaixo do atleta.</p>
-    <div class="rolagem">
-      <table>
-        <thead><tr>
-          <th>Atleta</th><th>Motivo</th><th>Valor</th><th>Vence em</th><th>Situação</th>
-        </tr></thead>
+        <thead><tr><th>Atleta</th><th>Motivo</th><th>Valor</th><th>Vence em</th><th>Situação</th></tr></thead>
         <tbody>
         <tr data-venc="2026-11-10">
           <td class="nome">Dani<span class="sub">PORTUGAL</span></td>
@@ -1094,14 +774,11 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
     </div>
   </section>
 
-  <section id="vencidas">
-    <h2>Multas vencidas</h2>
-    <p class="dica">Passaram do prazo e ainda não foram pagas. Quem pagar sai desta lista automaticamente na próxima atualização.</p>
-    <div class="rolagem alerta">
+  <section id="vencidas" class="revela">
+    <div class="sec-cab"><h2>Multas vencidas</h2><p>Passaram do prazo e ainda não foram pagas. Quem pagar sai desta lista na próxima atualização.</p></div>
+    <div class="rolagem cartao alerta">
       <table>
-        <thead><tr>
-          <th>Atleta</th><th>Motivo</th><th>Valor</th><th>Venceu em</th><th>Atraso</th>
-        </tr></thead>
+        <thead><tr><th>Atleta</th><th>Motivo</th><th>Valor</th><th>Venceu em</th><th>Atraso</th></tr></thead>
         <tbody>
         <tr data-venc="2026-08-25">
           <td class="nome">Vitão<span class="sub">C1-2026</span></td>
@@ -1130,26 +807,38 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
           <td class="n forte alerta">R$ 20,00</td>
           <td class="n discreto">27/10/2026</td>
           <td class="n"><span class="dias">13 dias</span></td>
-        </tr><tr data-vazio hidden><td colspan="5" class="vazio ok">Ninguém com multa vencida — todo mundo em dia com o prazo.</td></tr></tbody>
+        </tr><tr data-vazio hidden><td colspan="5" class="vazio ok">Ninguém com multa vencida, todo mundo em dia com o prazo.</td></tr></tbody>
       </table>
     </div>
   </section>
-
-
-  <p class="dica recalc" hidden>A situação de cada multa é recalculada no seu aparelho,
-      então vale para hoje mesmo que a página tenha sido gerada antes.</p>
-
-  <footer>
-    <p><b>De onde vêm estes números:</b> da planilha de controle da diretoria. Esta página é um retrato dela — se um jogo acabou de ser lançado, pode ainda não estar aqui.</p>
-    <p>Divergência no placar, num gol ou numa multa? Fale com a diretoria para conferir a súmula.</p>
-  </footer>
+  <p class="dica recalc" hidden>A situação de cada multa é recalculada no seu aparelho, então vale para hoje mesmo que a página tenha sido gerada antes.</p>
 </div>
-<script>
-/* A pagina e um retrato: "vence hoje" e "em atraso (N dias)" congelavam no dia em que eu
-   gerava o arquivo. Ele pegou isso com multas vencendo hoje ainda marcadas "a vencer",
-   cinco dias depois da geracao. Aqui a situacao e recalculada no aparelho de quem abre,
-   a partir da data de vencimento de cada linha - e a linha e remanejada para a tabela
-   certa, porque virar atraso muda de secao, nao so de etiqueta.
+
+<footer class="rodape">
+  <div class="wrap">
+    <div class="rodape-gs">
+      <img src="img/gs-na-area.png" alt="GS na Área" width="72" height="72">
+      <div>
+        <p class="rg-tit">Um site <span>GS na Área</span></p>
+        <p>Criado e administrado por GS na Área. Futebol, melhores momentos e resenha.</p>
+      </div>
+      <div class="gs-redes rodape-redes"><a class="btn-gs" href="https://www.instagram.com/gsnaarea/" target="_blank" rel="noopener" aria-label="Instagram da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.4" cy="6.6" r="1.4" fill="currentColor"/></svg><span>Instagram</span></a><a class="btn-gs" href="https://www.youtube.com/@GSnaAreaOficial" target="_blank" rel="noopener" aria-label="YouTube da GS na Área"><svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><rect x="1.5" y="4.5" width="21" height="15" rx="4.5" fill="currentColor"/><path d="M10 8.6v6.8l5.8-3.4z" fill="var(--ico-fundo,#A6F000)"/></svg><span>YouTube</span></a></div>
+    </div>
+  </div>
+  <div class="wrap rodape-in">
+    <div class="rodape-oa">
+      <img src="img/escudo-os-amigos.png" alt="" width="56" height="56">
+      <div>
+        <p class="rodape-nome">Os Amigos</p>
+        <p>Os números vêm da planilha de controle da diretoria. Esta página é um retrato dela: se um jogo acabou de ser lançado, pode ainda não estar aqui. Divergência no placar, num gol ou numa multa? Fale com a diretoria para conferir a súmula.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+<script>/* A pagina e um retrato: "vence hoje" e "em atraso (N dias)" congelavam no dia em que ela
+   era gerada. Aqui a situacao de cada multa e recalculada no aparelho de quem abre, a partir
+   da data de vencimento de cada linha, e a linha e remanejada para a tabela certa (virar
+   atraso muda de secao, nao so de etiqueta). Mesma logica do gerador antigo.
 
    O que NAO e recalculado: quem deve o que. Isso vem da planilha e continua sendo do dia
    da geracao - quem pagou ontem so sai da lista na proxima atualizacao. */
@@ -1208,7 +897,90 @@ td.nome .sub.so-mobile{display:none;}   /* especificidade acima de 'td.nome .sub
   var aviso = document.querySelector(".dica.recalc");
   if (aviso) { aviso.hidden = false; }
 })();
-</script>
 
+/* Entrada suave das secoes ao rolar. Sem IntersectionObserver (ou com movimento reduzido)
+   tudo aparece direto: o conteudo nunca depende da animacao para ser visto. */
+(function () {
+  var els = [].slice.call(document.querySelectorAll(".revela"));
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!("IntersectionObserver" in window) || reduz) { return; }
+  document.documentElement.classList.add("anima");
+  var io = new IntersectionObserver(function (ents) {
+    ents.forEach(function (en) {
+      if (en.isIntersecting) { en.target.classList.add("visivel"); io.unobserve(en.target); }
+    });
+  }, { rootMargin: "0px 0px -8% 0px" });
+  els.forEach(function (el) { io.observe(el); });
+})();
+
+/* Menu: destaca a secao que esta na tela */
+(function () {
+  var links = [].slice.call(document.querySelectorAll(".menu a"));
+  if (!("IntersectionObserver" in window) || !links.length) { return; }
+  var mapa = {};
+  links.forEach(function (a) { mapa[a.getAttribute("href").slice(1)] = a; });
+  var io = new IntersectionObserver(function (ents) {
+    ents.forEach(function (en) {
+      if (en.isIntersecting && mapa[en.target.id]) {
+        links.forEach(function (a) { a.classList.remove("ativo"); });
+        mapa[en.target.id].classList.add("ativo");
+      }
+    });
+  }, { rootMargin: "-45% 0px -50% 0px" });
+  Object.keys(mapa).forEach(function (id) {
+    var s = document.getElementById(id); if (s) { io.observe(s); }
+  });
+})();
+
+/* Lances girando a cada 5s: os videos grandes trocam (janela de 4 andando pela lista) e a
+   faixa de reels avanca um card. Para com o mouse/dedo em cima ou com foco do teclado, e so
+   gira quando a secao esta na tela (nao gasta nada com a pessoa lendo a tabela). */
+(function () {
+  var secao = document.getElementById("lances");
+  if (!secao) { return; }
+  var videos = secao.querySelector(".videos");
+  var reels = secao.querySelector(".reels");
+  var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var visivel = !("IntersectionObserver" in window), parado = false, ESPERA = 5000;
+
+  if (videos && videos.children.length > 4) { videos.classList.add("gira"); }
+
+  function pausaEm(el) {
+    if (!el) { return; }
+    el.addEventListener("mouseenter", function () { parado = true; });
+    el.addEventListener("mouseleave", function () { parado = false; });
+    el.addEventListener("focusin", function () { parado = true; });
+    el.addEventListener("focusout", function () { parado = false; });
+    el.addEventListener("touchstart", function () { parado = true; }, { passive: true });
+    el.addEventListener("touchend", function () { setTimeout(function () { parado = false; }, ESPERA); }, { passive: true });
+  }
+  pausaEm(videos); pausaEm(reels);
+
+  if ("IntersectionObserver" in window) {
+    new IntersectionObserver(function (ents) { visivel = ents[0].isIntersecting; }).observe(secao);
+  }
+
+  function giraVideos() {
+    if (!videos || !videos.classList.contains("gira")) { return; }
+    if (reduz) { videos.appendChild(videos.firstElementChild); return; }
+    videos.classList.add("trocando");
+    setTimeout(function () {
+      videos.appendChild(videos.firstElementChild);
+      videos.classList.remove("trocando");
+    }, 350);
+  }
+  function giraReels() {
+    if (!reels || reels.scrollWidth <= reels.clientWidth + 4) { return; }
+    var card = reels.querySelector(".lance");
+    var passo = card ? card.getBoundingClientRect().width + 12 : 180;
+    var fim = reels.scrollLeft + reels.clientWidth >= reels.scrollWidth - 4;
+    reels.scrollTo({ left: fim ? 0 : reels.scrollLeft + passo, behavior: reduz ? "auto" : "smooth" });
+  }
+  setInterval(function () {
+    if (!visivel || parado || document.hidden) { return; }
+    giraVideos(); giraReels();
+  }, ESPERA);
+})();
+</script>
 </body>
 </html>
